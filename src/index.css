@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* overriding the predefined tags  in the below example upon using h4 tag anywhere in the code it will be of green color due to this*/
+@layer base {
+  h4 {
+    @apply text-2xl text-green-300;
+  }
+ 
+}

@@ -1,9 +1,15 @@
 import React from 'react';
+import tankLogo from '../assets/tank.png';
 
 function Navbar() {
   return (
-    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center px-6 h-20'>
-      <div className='logo font-bold'>Force-One-Vault</div>
+    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center py-5 h-20 px-9 text-xl'>
+      <div className='logo font-bold flex items-center'>
+        Force-One-Vault
+        <span>
+          <img src={tankLogo} alt='' className='w-14 h-14 mx-2 mb-3' />
+        </span>
+      </div>
       <ul className='flex gap-14'>
         <li className='hover:font-bold '>
           <a href=''>Home</a>

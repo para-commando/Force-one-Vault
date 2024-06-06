@@ -3,7 +3,7 @@ import tankLogo from '../assets/tank.png';
 
 function Navbar() {
   return (
-    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center py-5 h-20 px-9 text-xl'>
+    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center py-5 h-20 px-9 text-xl sticky top-0'>
       <div className='logo font-bold flex items-center'>
         Force-One-Vault
         <span>

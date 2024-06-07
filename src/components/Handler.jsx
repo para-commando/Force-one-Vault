@@ -1,19 +1,26 @@
 import React from 'react';
 import tankLogo from '../assets/tank.png';
-import passwordShowIcon from '../assets/show.png';
-import passwordHideIcon from '../assets/hidden.png';
+import credentialShowIcon from '../assets/show.png';
+import credentialHideIcon from '../assets/hidden.png';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 function Handler() {
-  const passwordShowIconImgRef = useRef();
+  const credentialShowIconImgRef = useRef();
+  const [vaultCell, setVaultCell] = useState({
+    source: '',
+    uniqueCredId: '',
+    credential: '',
+  });
 
-  const showPassword = () => {
-    if (passwordShowIconImgRef.current.src.includes('hidden.png')) {
-      passwordShowIconImgRef.current.src = passwordShowIcon;
+  const saveCredential = () => {};
+
+  const showCredential = () => {
+    if (credentialShowIconImgRef.current.src.includes('hidden.png')) {
+      credentialShowIconImgRef.current.src = credentialShowIcon;
       return;
     }
 
-    passwordShowIconImgRef.current.src = passwordHideIcon;
+    credentialShowIconImgRef.current.src = credentialHideIcon;
     return;
   };
   return (
@@ -35,6 +42,7 @@ function Handler() {
           <div className='text-white flex flex-col py-4 gap-4 items-center'>
             <input
               className='rounded-full border-4 border-green-300 text-black text-center w-full'
+              value={vaultCell.source}
               placeholder='Enter Source URL/Info'
               type='text'
               name=''
@@ -43,6 +51,7 @@ function Handler() {
             <div className='flex gap-3 w-full'>
               <input
                 className='rounded-full border-4 border-green-300 text-black text-center w-1/2'
+                value={vaultCell.uniqueCredId}
                 placeholder='Unique Credential-id'
                 type='text'
                 name=''
@@ -51,30 +60,34 @@ function Handler() {
               <div className='flex items-center relative w-1/2'>
                 <input
                   className='rounded-full border-4 border-green-300 text-black text-center w-full pr-10'
+                  value={vaultCell.credential}
                   placeholder='Credential'
                   type='text'
                   name=''
                   id=''
                 />
-                <span className='absolute right-3' onClick={showPassword}>
+                <span className='absolute right-3' onClick={showCredential}>
                   <img
-                    ref={passwordShowIconImgRef}
-                    src={passwordShowIcon}
+                    ref={credentialShowIconImgRef}
+                    src={credentialShowIcon}
                     className='w-8 h-8 cursor-pointer'
-                    alt='Show Password'
+                    alt='Show Credential'
                   />
                 </span>
               </div>
             </div>
 
-            <button className='flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300 border-2'>
+            <button
+              onClick={saveCredential}
+              className='flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300 border-2'
+            >
               {' '}
               <lord-icon
                 src='https://cdn.lordicon.com/jgnvfzqg.json'
                 trigger='hover'
                 colors='primary:#ffffff'
               ></lord-icon>{' '}
-              Add Password
+              Add Credential
             </button>
           </div>
         </div>

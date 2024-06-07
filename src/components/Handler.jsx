@@ -1,8 +1,21 @@
 import React from 'react';
 import tankLogo from '../assets/tank.png';
 import passwordShowIcon from '../assets/show.png';
+import passwordHideIcon from '../assets/hidden.png';
 
+import { useRef } from 'react';
 function Handler() {
+  const passwordShowIconImgRef = useRef();
+
+  const showPassword = () => {
+    if (passwordShowIconImgRef.current.src.includes('hidden.png')) {
+      passwordShowIconImgRef.current.src = passwordShowIcon;
+      return;
+    }
+
+    passwordShowIconImgRef.current.src = passwordHideIcon;
+    return;
+  };
   return (
     <>
       <div className='bg-armyBackgroundColor h-screen '>
@@ -35,20 +48,20 @@ function Handler() {
                 name=''
                 id=''
               />
-              <div className='flex items-center '>
+              <div className='flex items-center relative w-1/2'>
                 <input
-                  className='rounded-full border-4 border-green-300 text-black text-center  w-full'
+                  className='rounded-full border-4 border-green-300 text-black text-center w-full pr-10'
                   placeholder='Credential'
                   type='text'
                   name=''
                   id=''
                 />
-                <span>
-                  {' '}
+                <span className='absolute right-3' onClick={showPassword}>
                   <img
+                    ref={passwordShowIconImgRef}
                     src={passwordShowIcon}
-                    className='w-8 h-8 mx-2  invert cursor-pointer'
-                    alt=''
+                    className='w-8 h-8 cursor-pointer'
+                    alt='Show Password'
                   />
                 </span>
               </div>

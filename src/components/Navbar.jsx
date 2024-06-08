@@ -3,7 +3,7 @@ import tankLogo from '../assets/tank.png';
 
 function Navbar() {
   return (
-    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center py-5 h-20 px-9 text-xl sticky top-0'>
+    <nav className='bg-[#1a200e]  text-white  flex justify-between items-center py-5 h-20 px-9 text-xl sticky top-0 z-10'>
       <div className='logo font-bold flex items-center'>
         Force-One-Vault
         <span>
@@ -12,7 +12,7 @@ function Navbar() {
       </div>
       <ul className='flex gap-14'>
         <li className='hover:font-bold '>
-          <a href=''>Home</a>
+          <a href='/'>Home</a>
         </li>
         <li className='hover:font-bold'>
           <a href='#about'>About</a>

@@ -2,7 +2,7 @@ import React from 'react';
 import tankLogo from '../assets/tank.png';
 import credentialShowIcon from '../assets/show.png';
 import credentialHideIcon from '../assets/hidden.png';
-
+import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 function Handler() {
   const credentialShowIconImgRef = useRef();
@@ -108,7 +108,7 @@ function Handler() {
 
             <button
               onClick={saveCredential}
-              className='flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300 border-2'
+              className='flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300  '
             >
               {' '}
               <lord-icon
@@ -121,46 +121,46 @@ function Handler() {
           </div>
         </div>
         <div className='passwords justify-center px-5'>
-          <h2>Your Credentials</h2>
-          <table className='table-auto text-white w-full '>
-            <thead className='border-white border-2 bg-green-800'>
-              <tr className='border-white border-2'>
-                <th className='border-white border-2'>Song</th>
-                <th className='border-white border-2'>Artist</th>
-                <th className='border-white border-2'>Year</th>
-              </tr>
-            </thead>
-            <tbody className='border-white border-2'>
-              <tr className='border-white border-2'>
-                <td className=' text-center border-white border-2'>
-                  The Sliding Mr. Bones (Next Stop, Pottersville)
-                </td>
-                <td className=' text-center border-white border-2'>
-                  {' '}
-                  Malcolm Lockyer
-                </td>
-                <td className=' text-center border-white border-2'>1961</td>
-              </tr>
-              <tr className='border-white border-2'>
-                <td className=' text-center border-white border-2'>
-                  Witchy Woman
-                </td>
-                <td className=' text-center border-white border-2'>
-                  The Eagles
-                </td>
-                <td className=' text-center border-white border-2'>1972</td>
-              </tr>
-              <tr className='border-white border-2'>
-                <td className=' text-center border-white border-2'>
-                  Shining Star
-                </td>
-                <td className=' text-center border-white border-2'>
-                  Earth, Wind, and Fire
-                </td>
-                <td className=' text-center border-white border-2'>1975</td>
-              </tr>
-            </tbody>
-          </table>
+          <h2 className='text-white font-bold text-2xl p-5 text-center'>
+            Your Credentials
+          </h2>
+          {/* overflow:hidden is needed to be added if border radius is to be put on a table */}
+          {credsList.length === 0 && (
+            <div className='text-white text-[14px] flex flex-col justify-center items-center'>
+              <span>
+                <img className='w-44 h-44 invert' src={emptyLockerImg} alt='' />
+              </span>
+              <span className='text-lg py-2'> No Credentials Found</span>
+            </div>
+          )}
+          {credsList.length > 0 && (
+            <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
+              <thead className='border-white   bg-green-300 text-black'>
+                <tr className='border-white  '>
+                  <th className='border-white  '>Source</th>
+                  <th className='border-white  '>Unique Credential ID</th>
+                  <th className='border-white  '>Credential</th>
+                </tr>
+              </thead>
+              <tbody className='border-white   bg-gray-900'>
+                {credsList.map((ele) => {
+                  return (
+                    <tr className='border-white'>
+                      <td className=' border-2 py-2 w-32 text-center border-black  '>
+                        {ele.source}
+                      </td>
+                      <td className=' border-2 py-2 w-32 text-center border-black  '>
+                        {ele.uniqueCredId}
+                      </td>
+                      <td className=' border-2 py-2 w-32 text-center border-black  '>
+                        {ele.credential}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>

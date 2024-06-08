@@ -15,10 +15,10 @@ function Navbar() {
           <a href=''>Home</a>
         </li>
         <li className='hover:font-bold'>
-          <a href=''>About</a>
+          <a href='#about'>About</a>
         </li>
         <li className='hover:font-bold'>
-          <a href=''>Contact</a>
+          <a href='#contact'  >Contact</a>
         </li>
       </ul>
     </nav>

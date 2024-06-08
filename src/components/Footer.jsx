@@ -9,7 +9,7 @@ function Footer() {
         });
       };
   return (
-    <footer className='bg-black text-white relative bottom-0'>
+    <footer className='bg-black text-white'>
     <div className='bg-gray-950 text-center py-3'>
       <a href='#' onClick={handleBackToTop}>Back to Top</a>
     </div>

@@ -18,6 +18,11 @@ const TableWithReadMore = ({ credsList }) => {
     return `${content.substring(0, maxLength)}...`;
   };
 
+  const copyToClipBoard = (params) => {
+    console.log('🚀 ~ ()=>{copyToClipBoard ~ params:', params);
+    navigator.clipboard.writeText(params);
+  };
+
   return (
     <div>
       {credsList.length > 0 && (
@@ -62,7 +67,12 @@ const TableWithReadMore = ({ credsList }) => {
                       <span className='pb-1 text-wrap break-words w-3/4'>
                         {renderCellContent(ele.source, isExpanded)}
                       </span>
-                      <span className='invert cursor-pointer'>
+                      <span
+                        className='invert cursor-pointer'
+                        onClick={() => {
+                          copyToClipBoard(ele.source);
+                        }}
+                      >
                         <lord-icon
                           style={{
                             width: '25px',
@@ -81,7 +91,12 @@ const TableWithReadMore = ({ credsList }) => {
                       <span className='pb-1 text-wrap break-words w-3/4'>
                         {renderCellContent(ele.uniqueCredId, isExpanded)}
                       </span>
-                      <span className='invert cursor-pointer'>
+                      <span
+                        className='invert cursor-pointer'
+                        onClick={() => {
+                          copyToClipBoard(ele.uniqueCredId);
+                        }}
+                      >
                         <lord-icon
                           style={{
                             width: '25px',
@@ -100,7 +115,12 @@ const TableWithReadMore = ({ credsList }) => {
                       <span className='pb-1 text-wrap break-words w-3/4'>
                         {renderCellContent(ele.credential, isExpanded)}
                       </span>
-                      <span className='invert cursor-pointer'>
+                      <span
+                        className='invert cursor-pointer'
+                        onClick={() => {
+                          copyToClipBoard(ele.credential);
+                        }}
+                      >
                         <lord-icon
                           style={{
                             width: '25px',

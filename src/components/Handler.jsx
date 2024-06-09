@@ -13,7 +13,8 @@ function Handler() {
     source: '',
     uniqueCredId: '',
     credential: '',
-    id:''
+    id:'',
+    isEditNotClicked: true,
   });
   const [credsList, setCredsList] = useState([]);
 
@@ -33,6 +34,7 @@ function Handler() {
       credential: vaultCell.credential || '',
     };
     vaultCell.id = uuidv4();
+    vaultCell.isEditNotClicked = true;
     setCredsList([...credsList, vaultCell]);
     localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 

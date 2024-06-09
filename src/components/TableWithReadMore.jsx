@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const TableWithReadMore = ({ credsList }) => {
   const [expandedRows, setExpandedRows] = useState({});
-
+  const [onEditRows, setOnEditRows] = useState({});
+  useEffect(() => {}, [credsList]);
   const toggleRow = (id) => {
     setExpandedRows((prevState) => ({
       ...prevState,
@@ -20,7 +21,7 @@ const TableWithReadMore = ({ credsList }) => {
   };
 
   const copyToClipBoard = (params) => {
-     navigator.clipboard.writeText(params);
+    navigator.clipboard.writeText(params);
     toast('Copied To Clipboard!', {
       position: 'top-right',
       autoClose: 1000,
@@ -29,8 +30,57 @@ const TableWithReadMore = ({ credsList }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'colored'
+      theme: 'colored',
     });
+  };
+
+  const saveEdit = (ele) => {
+    toast('Changes Saved!', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.id]: !prevState[ele.id],
+    }));
+  };
+
+  const cancelEdit = (ele) => {
+    toast('Changes Reverted!', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.id]: !prevState[ele.id],
+    }));
+  };
+
+  const editCredential = (e, ele) => {
+    console.log('🚀 ~ editCredential ~ ele:', ele);
+
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.id]: !prevState[ele.id],
+    }));
+    // console.log('🚀 ~ editCredential ~ onEditRows:', onEditRows);
+    // setExpandedRows((prevState) => ({
+    //     ...prevState,
+    //     [id]: !prevState[id],
+    //   }));
   };
 
   return (
@@ -47,7 +97,6 @@ const TableWithReadMore = ({ credsList }) => {
         pauseOnHover
         theme='light'
         transition='Bounce'
-        
       />
       {/* Same as */}
       <ToastContainer />
@@ -92,26 +141,71 @@ const TableWithReadMore = ({ credsList }) => {
                   </td>
                   <td className='border-2 py-2 border-black text-center max-w-32'>
                     <div className='flex items-center justify-center'>
-                      <span className='pb-1 text-wrap break-words w-3/4'>
-                        {renderCellContent(ele.source, isExpanded)}
-                      </span>
-                      <span
-                        className='invert cursor-pointer'
-                        onClick={() => {
-                          copyToClipBoard(ele.source);
-                        }}
-                      >
-                        <lord-icon
-                          style={{
-                            width: '25px',
-                            height: '25px',
-                            paddingTop: '3px',
-                            paddingLeft: '3px',
-                          }}
-                          src='https://cdn.lordicon.com/iykgtsbt.json'
-                          trigger='hover'
-                        ></lord-icon>
-                      </span>
+                      
+                      {onEditRows[ele.id] ? (
+                        <>
+                          <input
+                            type='text'
+                            value={'sdsds'}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className='text-black w-3/4'
+                          />
+                          <button
+                            onClick={(e) => {
+                              saveEdit(ele);
+                            }}
+                            className='ml-2 bg-green-500 text-white py-1 px-2 rounded'
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={(e) => {cancelEdit(ele)}}
+                            className='ml-2 bg-red-500 text-white py-1 px-2 rounded'
+                          >
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <span className='pb-1 text-wrap break-words w-3/4'>
+                            {renderCellContent(ele.credential, isExpanded)}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <span
+                              onClick={() => {
+                                copyToClipBoard(ele.credential);
+                              }}
+                            >
+                              <lord-icon
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingRight: '6px',
+                                }}
+                                src='https://cdn.lordicon.com/iykgtsbt.json'
+                                trigger='hover'
+                              ></lord-icon>
+                            </span>
+                            <span
+                              onClick={(e) => {
+                                editCredential(e, ele);
+                              }}
+                            >
+                              <lord-icon
+                                src='https://cdn.lordicon.com/gwlusjdu.json'
+                                trigger='hover'
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingLeft: '6px',
+                                }}
+                              ></lord-icon>
+                            </span>
+                          </span>
+                        </>
+                      )}
                     </div>
                   </td>
                   <td className='border-2 py-2 border-black text-center max-w-32'>
@@ -119,46 +213,82 @@ const TableWithReadMore = ({ credsList }) => {
                       <span className='pb-1 text-wrap break-words w-3/4'>
                         {renderCellContent(ele.uniqueCredId, isExpanded)}
                       </span>
-                      <span
-                        className='invert cursor-pointer'
-                        onClick={() => {
-                          copyToClipBoard(ele.uniqueCredId);
-                        }}
-                      >
-                        <lord-icon
-                          style={{
-                            width: '25px',
-                            height: '25px',
-                            paddingTop: '3px',
-                            paddingLeft: '3px',
+                      <span className='invert cursor-pointer'>
+                        <span
+                          onClick={() => {
+                            copyToClipBoard(ele.uniqueCredId);
                           }}
-                          src='https://cdn.lordicon.com/iykgtsbt.json'
-                          trigger='hover'
-                        ></lord-icon>{' '}
+                        >
+                          <lord-icon
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                              paddingTop: '3px',
+                              paddingRight: '6px',
+                            }}
+                            src='https://cdn.lordicon.com/iykgtsbt.json'
+                            trigger='hover'
+                          ></lord-icon>
+                        </span>
+
+                        <span
+                          onClick={(e) => {
+                            editCredential(e, ele);
+                          }}
+                        >
+                          <lord-icon
+                            src='https://cdn.lordicon.com/gwlusjdu.json'
+                            trigger='hover'
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                              paddingTop: '3px',
+                              paddingLeft: '6px',
+                            }}
+                          ></lord-icon>
+                        </span>
                       </span>
                     </div>
                   </td>
                   <td className='border-2 py-2 border-black text-center max-w-32'>
                     <div className='flex items-center justify-center'>
                       <span className='pb-1 text-wrap break-words w-3/4'>
-                        {renderCellContent(ele.credential, isExpanded)}
+                        {ele.isEditNotClicked &&
+                          renderCellContent(ele.credential, isExpanded)}
                       </span>
-                      <span
-                        className='invert cursor-pointer'
-                        onClick={() => {
-                          copyToClipBoard(ele.credential);
-                        }}
-                      >
-                        <lord-icon
-                          style={{
-                            width: '25px',
-                            height: '25px',
-                            paddingTop: '3px',
-                            paddingLeft: '3px',
+                      <span className='invert cursor-pointer'>
+                        <span
+                          onClick={() => {
+                            copyToClipBoard(ele.credential);
                           }}
-                          src='https://cdn.lordicon.com/iykgtsbt.json'
-                          trigger='hover'
-                        ></lord-icon>{' '}
+                        >
+                          <lord-icon
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                              paddingTop: '3px',
+                              paddingRight: '6px',
+                            }}
+                            src='https://cdn.lordicon.com/iykgtsbt.json'
+                            trigger='hover'
+                          ></lord-icon>
+                        </span>
+                        <span
+                          onClick={(e) => {
+                            editCredential(e, ele);
+                          }}
+                        >
+                          <lord-icon
+                            src='https://cdn.lordicon.com/gwlusjdu.json'
+                            trigger='hover'
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                              paddingTop: '3px',
+                              paddingLeft: '6px',
+                            }}
+                          ></lord-icon>
+                        </span>
                       </span>
                     </div>
                   </td>

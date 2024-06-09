@@ -6,6 +6,7 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 function Handler() {
   const credentialShowIconImgRef = useRef();
+  const credentialRef = useRef();
   const [vaultCell, setVaultCell] = useState({
     source: '',
     uniqueCredId: '',
@@ -39,9 +40,11 @@ function Handler() {
   const showCredential = () => {
     if (credentialShowIconImgRef.current.src.includes('hidden.png')) {
       credentialShowIconImgRef.current.src = credentialShowIcon;
+      credentialRef.current.type = 'password';
+
       return;
     }
-
+    credentialRef.current.type = 'text';
     credentialShowIconImgRef.current.src = credentialHideIcon;
     return;
   };
@@ -51,7 +54,7 @@ function Handler() {
   };
   return (
     <>
-      <div className='bg-armyBackgroundColor h-screen '>
+      <div className='bg-armyBackgroundColor h-full relative'>
         <div className='mx-auto max-w-4xl bg-gray-950 text-white px-28 pb-7'>
           <div className='logo flex flex-col items-center justify-center gap-2'>
             <div className='flex items-center text-2xl'>
@@ -87,12 +90,13 @@ function Handler() {
               />
               <div className='flex items-center relative w-1/2'>
                 <input
+                  ref={credentialRef}
                   className='rounded-full border-4 border-green-300 text-black text-center w-full pr-10'
                   value={vaultCell.credential}
                   onChange={(e) => handleInputData(e)}
                   placeholder='Credential'
                   name='credential'
-                  type='text'
+                  type='password'
                   id=''
                 />
                 <span className='absolute right-3' onClick={showCredential}>
@@ -142,18 +146,66 @@ function Handler() {
                   <th className='border-white  '>Credential</th>
                 </tr>
               </thead>
-              <tbody className='border-white   bg-gray-900'>
+              <tbody className='border-white   bg-gray-900 '>
                 {credsList.map((ele) => {
                   return (
-                    <tr className='border-white'>
-                      <td className=' border-2 py-2 w-32 text-center border-black  '>
-                        {ele.source}
+                    <tr className='border-white text-center'>
+                      <td className=' border-2 py-2 border-black text-center max-w-32'>
+                        <div className='flex items-center justify-center'>
+                          <span className='pb-1  text-wrap break-words w-3/4 '>
+                            {ele.source}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <lord-icon
+                              style={{
+                                width: '25px',
+                                height: '25px',
+                                paddingTop: '3px',
+                                paddingLeft: '3px',
+                              }}
+                              src='https://cdn.lordicon.com/iykgtsbt.json'
+                              trigger='hover'
+                            ></lord-icon>
+                          </span>
+                        </div>
                       </td>
-                      <td className=' border-2 py-2 w-32 text-center border-black  '>
-                        {ele.uniqueCredId}
+                      <td className=' border-2 py-2  border-black  text-center max-w-32'>
+                        <div className='flex items-center justify-center box-border'>
+                          <span className='pb-1  text-wrap break-words w-3/4 '>
+                            {ele.uniqueCredId}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <lord-icon
+                              style={{
+                                width: '25px',
+                                height: '25px',
+                                paddingTop: '3px',
+                                paddingLeft: '3px',
+                              }}
+                              src='https://cdn.lordicon.com/iykgtsbt.json'
+                              trigger='hover'
+                            ></lord-icon>
+                          </span>
+                        </div>
                       </td>
-                      <td className=' border-2 py-2 w-32 text-center border-black  '>
-                        {ele.credential}
+                      <td className=' border-2 py-2  border-black  text-center max-w-32 '>
+                        <div className='flex items-center justify-center box-border'>
+                          <span className='pb-1  text-wrap break-words w-3/4 '>
+                            {ele.credential}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <lord-icon
+                              style={{
+                                width: '25px',
+                                height: '25px',
+                                paddingTop: '3px',
+                                paddingLeft: '3px',
+                              }}
+                              src='https://cdn.lordicon.com/iykgtsbt.json'
+                              trigger='hover'
+                            ></lord-icon>
+                          </span>
+                        </div>
                       </td>
                     </tr>
                   );

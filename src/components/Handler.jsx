@@ -4,6 +4,8 @@ import credentialShowIcon from '../assets/show.png';
 import credentialHideIcon from '../assets/hidden.png';
 import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
+import TableWithReadMore from './TableWithReadMore';
+import { v4 as uuidv4 } from 'uuid';
 function Handler() {
   const credentialShowIconImgRef = useRef();
   const credentialRef = useRef();
@@ -11,6 +13,7 @@ function Handler() {
     source: '',
     uniqueCredId: '',
     credential: '',
+    id:''
   });
   const [credsList, setCredsList] = useState([]);
 
@@ -29,7 +32,7 @@ function Handler() {
       uniqueCredId: vaultCell.uniqueCredId || '',
       credential: vaultCell.credential || '',
     };
-
+    vaultCell.id = uuidv4();
     setCredsList([...credsList, vaultCell]);
     localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 
@@ -50,7 +53,10 @@ function Handler() {
   };
 
   const handleInputData = (e) => {
-    setVaultCell({ ...vaultCell, [e.target.name]: e.target.value });
+    setVaultCell({
+      ...vaultCell,
+      [e.target.name]: e.target.value,
+    });
   };
   return (
     <>
@@ -137,82 +143,7 @@ function Handler() {
               <span className='text-lg py-2'> No Credentials Found</span>
             </div>
           )}
-          {credsList.length > 0 && (
-            <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
-              <thead className='border-white   bg-green-300 text-black'>
-                <tr className='border-white  '>
-                  <th className='border-white  '>Source</th>
-                  <th className='border-white  '>Unique Credential ID</th>
-                  <th className='border-white  '>Credential</th>
-                </tr>
-              </thead>
-              <tbody className='border-white   bg-gray-900 '>
-                {credsList.map((ele) => {
-                  return (
-                    <tr className='border-white text-center'>
-                      <td className=' border-2 py-2 border-black text-center max-w-32'>
-                        <div className='flex items-center justify-center'>
-                          <span className='pb-1  text-wrap break-words w-3/4 '>
-                            {ele.source}
-                          </span>
-                          <span className='invert cursor-pointer'>
-                            <lord-icon
-                              style={{
-                                width: '25px',
-                                height: '25px',
-                                paddingTop: '3px',
-                                paddingLeft: '3px',
-                              }}
-                              src='https://cdn.lordicon.com/iykgtsbt.json'
-                              trigger='hover'
-                            ></lord-icon>
-                          </span>
-                        </div>
-                      </td>
-                      <td className=' border-2 py-2  border-black  text-center max-w-32'>
-                        <div className='flex items-center justify-center box-border'>
-                          <span className='pb-1  text-wrap break-words w-3/4 '>
-                            {ele.uniqueCredId}
-                          </span>
-                          <span className='invert cursor-pointer'>
-                            <lord-icon
-                              style={{
-                                width: '25px',
-                                height: '25px',
-                                paddingTop: '3px',
-                                paddingLeft: '3px',
-                              }}
-                              src='https://cdn.lordicon.com/iykgtsbt.json'
-                              trigger='hover'
-                            ></lord-icon>
-                          </span>
-                        </div>
-                      </td>
-                      <td className=' border-2 py-2  border-black  text-center max-w-32 '>
-                        <div className='flex items-center justify-center box-border'>
-                          <span className='pb-1  text-wrap break-words w-3/4 '>
-                            {ele.credential}
-                          </span>
-                          <span className='invert cursor-pointer'>
-                            <lord-icon
-                              style={{
-                                width: '25px',
-                                height: '25px',
-                                paddingTop: '3px',
-                                paddingLeft: '3px',
-                              }}
-                              src='https://cdn.lordicon.com/iykgtsbt.json'
-                              trigger='hover'
-                            ></lord-icon>
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          )}
+          <TableWithReadMore credsList={credsList} />
         </div>
       </div>
     </>

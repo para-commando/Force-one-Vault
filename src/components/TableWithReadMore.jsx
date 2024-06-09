@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const TableWithReadMore = ({ credsList }) => {
   const [expandedRows, setExpandedRows] = useState({});
 
@@ -19,12 +20,39 @@ const TableWithReadMore = ({ credsList }) => {
   };
 
   const copyToClipBoard = (params) => {
-    console.log('🚀 ~ ()=>{copyToClipBoard ~ params:', params);
-    navigator.clipboard.writeText(params);
+     navigator.clipboard.writeText(params);
+    toast('Copied To Clipboard!', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored'
+    });
   };
 
   return (
     <div>
+      <ToastContainer
+        position='top-right'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='light'
+        transition='Bounce'
+        
+      />
+      {/* Same as */}
+      <ToastContainer />
+      {/* Same as */}
+      <ToastContainer />
       {credsList.length > 0 && (
         <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
           <thead className='border-white bg-green-300 text-black'>

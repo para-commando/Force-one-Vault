@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const TableWithReadMore = ({ credsList }) => {
+import { useSelector, useDispatch } from 'react-redux';
+const TableWithReadMore = () => {
+  const credsList = useSelector((state) => state.credsList.value);
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
   useEffect(() => {}, [credsList]);
@@ -112,6 +114,7 @@ const TableWithReadMore = ({ credsList }) => {
       {/* Same as */}
       <ToastContainer />
       {credsList.length > 0 && (
+        
         <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
           <thead className='border-white bg-green-300 text-black'>
             <tr className='border-white'>

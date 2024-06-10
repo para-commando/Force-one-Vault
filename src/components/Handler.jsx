@@ -6,6 +6,9 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
+import { setCredsList } from '../features/credsList/credsList';
+import { useSelector, useDispatch } from 'react-redux'
+
 function Handler() {
   const credentialShowIconImgRef = useRef();
   const credentialRef = useRef();
@@ -19,12 +22,13 @@ function Handler() {
     cellTwoID: '',
     cellThreeID: '',
   });
-  const [credsList, setCredsList] = useState([]);
+  const credsList = useSelector((state) => state.credsList.value)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     let creds = localStorage.getItem('creds');
     if (creds) {
-      setCredsList(JSON.parse(creds));
+      dispatch(setCredsList(JSON.parse(creds)));
     }
   }, []);
 
@@ -42,7 +46,7 @@ function Handler() {
     vaultCell.cellThreeID = uuidv4();
     vaultCell.isEditNotClicked = true;
     
-    setCredsList([...credsList, vaultCell]);
+    dispatch(setCredsList([...credsList, vaultCell]))
     localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 
     const aaa = localStorage.getItem('creds');
@@ -152,7 +156,7 @@ function Handler() {
               <span className='text-lg py-2'> No Credentials Found</span>
             </div>
           )}
-          <TableWithReadMore credsList={credsList} />
+          <TableWithReadMore />
         </div>
       </div>
     </>

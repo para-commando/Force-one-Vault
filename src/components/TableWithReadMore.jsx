@@ -5,10 +5,10 @@ const TableWithReadMore = ({ credsList }) => {
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
   useEffect(() => {}, [credsList]);
-  const toggleRow = (id) => {
+  const toggleRow = (mainId) => {
     setExpandedRows((prevState) => ({
       ...prevState,
-      [id]: !prevState[id],
+      [mainId]: !prevState[mainId],
     }));
   };
 
@@ -34,55 +34,64 @@ const TableWithReadMore = ({ credsList }) => {
     });
   };
 
-  const saveEdit = (ele) => {
-    toast('Changes Saved!', {
-      position: 'top-right',
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'colored',
-    });
-
+  const saveEditCellOne = (ele) => {
     setOnEditRows((prevState) => ({
       ...prevState,
-      [ele.id]: !prevState[ele.id],
+      [ele.cellOneID]: !prevState[ele.cellOneID],
     }));
   };
 
-  const cancelEdit = (ele) => {
-    toast('Changes Reverted!', {
-        position: 'top-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
-      });
+  const cancelEditCellOne = (ele) => {
     setOnEditRows((prevState) => ({
       ...prevState,
-      [ele.id]: !prevState[ele.id],
+      [ele.cellOneID]: !prevState[ele.cellOneID],
     }));
   };
 
-  const editCredential = (e, ele) => {
-    console.log('🚀 ~ editCredential ~ ele:', ele);
-
+  const editCredentialCellOne = (e, ele) => {
     setOnEditRows((prevState) => ({
       ...prevState,
-      [ele.id]: !prevState[ele.id],
+      [ele.cellOneID]: !prevState[ele.cellOneID],
     }));
-    // console.log('🚀 ~ editCredential ~ onEditRows:', onEditRows);
-    // setExpandedRows((prevState) => ({
-    //     ...prevState,
-    //     [id]: !prevState[id],
-    //   }));
   };
 
+  const saveEditCellTwo = (ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellTwoID]: !prevState[ele.cellTwoID],
+    }));
+  };
+
+  const editCredentialCellTwo = (e, ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellTwoID]: !prevState[ele.cellTwoID],
+    }));
+  };
+  const cancelEditCellTwo = (ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellTwoID]: !prevState[ele.cellTwoID],
+    }));
+  };
+  const saveEditCellThree = (ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellThreeID]: !prevState[ele.cellThreeID],
+    }));
+  };
+  const cancelEditCellThree = (ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellThreeID]: !prevState[ele.cellThreeID],
+    }));
+  };
+  const editCredentialCellThree = (e, ele) => {
+    setOnEditRows((prevState) => ({
+      ...prevState,
+      [ele.cellThreeID]: !prevState[ele.cellThreeID],
+    }));
+  };
   return (
     <div>
       <ToastContainer
@@ -114,13 +123,13 @@ const TableWithReadMore = ({ credsList }) => {
           </thead>
           <tbody className='border-white bg-gray-900'>
             {credsList.map((ele) => {
-              const isExpanded = !!expandedRows[ele.id];
+              const isExpanded = !!expandedRows[ele.mainId];
               return (
-                <tr key={ele.id} className='border-white text-center'>
+                <tr key={ele.mainId} className='border-white text-center'>
                   <td className='border-2 py-2 border-black text-center max-w-32'>
                     <button
                       className='text-blue-500 hover:underline mt-2'
-                      onClick={() => toggleRow(ele.id)}
+                      onClick={() => toggleRow(ele.mainId)}
                     >
                       {isExpanded ? (
                         <span title='Read Less' className='invert'>
@@ -141,26 +150,167 @@ const TableWithReadMore = ({ credsList }) => {
                   </td>
                   <td className='border-2 py-2 border-black text-center max-w-32'>
                     <div className='flex items-center justify-center'>
-                      
-                      {onEditRows[ele.id] ? (
+                      {onEditRows[ele.cellOneID] ? (
                         <>
                           <input
                             type='text'
-                            value={'sdsds'}
+                            value={ele.source}
                             onChange={(e) => setEditValue(e.target.value)}
-                            className='text-black w-3/4'
+                            className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
                             onClick={(e) => {
-                              saveEdit(ele);
+                              saveEditCellOne(ele);
                             }}
-                            className='ml-2 bg-green-500 text-white py-1 px-2 rounded'
+                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
                           >
                             Save
                           </button>
                           <button
-                            onClick={(e) => {cancelEdit(ele)}}
-                            className='ml-2 bg-red-500 text-white py-1 px-2 rounded'
+                            onClick={(e) => {
+                              cancelEditCellOne(ele);
+                            }}
+                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
+                          >
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <span className='pb-1 text-wrap break-words w-3/4'>
+                            {renderCellContent(ele.source, isExpanded)}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <span
+                              onClick={() => {
+                                copyToClipBoard(ele.source);
+                              }}
+                            >
+                              <lord-icon
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingRight: '6px',
+                                }}
+                                src='https://cdn.lordicon.com/iykgtsbt.json'
+                                trigger='hover'
+                              ></lord-icon>
+                            </span>
+                            <span
+                              onClick={(e) => {
+                                editCredentialCellOne(e, ele);
+                              }}
+                            >
+                              <lord-icon
+                                src='https://cdn.lordicon.com/gwlusjdu.json'
+                                trigger='hover'
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingLeft: '6px',
+                                }}
+                              ></lord-icon>
+                            </span>
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                    <div className='flex items-center justify-center'>
+                      {onEditRows[ele.cellTwoID] ? (
+                        <>
+                          <input
+                            type='text'
+                            value={ele.uniqueCredId}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className='text-black w-3/4 mx-2 px-2'
+                          />
+                          <button
+                            onClick={(e) => {
+                              saveEditCellTwo(ele);
+                            }}
+                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              cancelEditCellTwo(ele);
+                            }}
+                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
+                          >
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <span className='pb-1 text-wrap break-words w-3/4'>
+                            {renderCellContent(ele.uniqueCredId, isExpanded)}
+                          </span>
+                          <span className='invert cursor-pointer'>
+                            <span
+                              onClick={() => {
+                                copyToClipBoard(ele.uniqueCredId);
+                              }}
+                            >
+                              <lord-icon
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingRight: '6px',
+                                }}
+                                src='https://cdn.lordicon.com/iykgtsbt.json'
+                                trigger='hover'
+                              ></lord-icon>
+                            </span>
+                            <span
+                              onClick={(e) => {
+                                editCredentialCellTwo(e, ele);
+                              }}
+                            >
+                              <lord-icon
+                                src='https://cdn.lordicon.com/gwlusjdu.json'
+                                trigger='hover'
+                                style={{
+                                  width: '25px',
+                                  height: '25px',
+                                  paddingTop: '3px',
+                                  paddingLeft: '6px',
+                                }}
+                              ></lord-icon>
+                            </span>
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                    <div className='flex items-center justify-center'>
+                      {onEditRows[ele.cellThreeID] ? (
+                        <>
+                          <input
+                            type='text'
+                            value={ele.credential}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className='text-black w-3/4 mx-2 px-2'
+                          />
+                          <button
+                            onClick={(e) => {
+                              saveEditCellThree(ele);
+                            }}
+                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              cancelEditCellThree(ele);
+                            }}
+                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
                           >
                             Cancel
                           </button>
@@ -189,7 +339,7 @@ const TableWithReadMore = ({ credsList }) => {
                             </span>
                             <span
                               onClick={(e) => {
-                                editCredential(e, ele);
+                                editCredentialCellThree(e, ele);
                               }}
                             >
                               <lord-icon
@@ -206,90 +356,6 @@ const TableWithReadMore = ({ credsList }) => {
                           </span>
                         </>
                       )}
-                    </div>
-                  </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
-                    <div className='flex items-center justify-center'>
-                      <span className='pb-1 text-wrap break-words w-3/4'>
-                        {renderCellContent(ele.uniqueCredId, isExpanded)}
-                      </span>
-                      <span className='invert cursor-pointer'>
-                        <span
-                          onClick={() => {
-                            copyToClipBoard(ele.uniqueCredId);
-                          }}
-                        >
-                          <lord-icon
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                              paddingTop: '3px',
-                              paddingRight: '6px',
-                            }}
-                            src='https://cdn.lordicon.com/iykgtsbt.json'
-                            trigger='hover'
-                          ></lord-icon>
-                        </span>
-
-                        <span
-                          onClick={(e) => {
-                            editCredential(e, ele);
-                          }}
-                        >
-                          <lord-icon
-                            src='https://cdn.lordicon.com/gwlusjdu.json'
-                            trigger='hover'
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                              paddingTop: '3px',
-                              paddingLeft: '6px',
-                            }}
-                          ></lord-icon>
-                        </span>
-                      </span>
-                    </div>
-                  </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
-                    <div className='flex items-center justify-center'>
-                      <span className='pb-1 text-wrap break-words w-3/4'>
-                        {ele.isEditNotClicked &&
-                          renderCellContent(ele.credential, isExpanded)}
-                      </span>
-                      <span className='invert cursor-pointer'>
-                        <span
-                          onClick={() => {
-                            copyToClipBoard(ele.credential);
-                          }}
-                        >
-                          <lord-icon
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                              paddingTop: '3px',
-                              paddingRight: '6px',
-                            }}
-                            src='https://cdn.lordicon.com/iykgtsbt.json'
-                            trigger='hover'
-                          ></lord-icon>
-                        </span>
-                        <span
-                          onClick={(e) => {
-                            editCredential(e, ele);
-                          }}
-                        >
-                          <lord-icon
-                            src='https://cdn.lordicon.com/gwlusjdu.json'
-                            trigger='hover'
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                              paddingTop: '3px',
-                              paddingLeft: '6px',
-                            }}
-                          ></lord-icon>
-                        </span>
-                      </span>
                     </div>
                   </td>
                 </tr>

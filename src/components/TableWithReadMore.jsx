@@ -11,13 +11,23 @@ const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
-  const [cellOneOnChangeValue, setCellOneOnChangeValue] = useState('');
-  const [cellTwoOnChangeValue, setCellTwoOnChangeValue] = useState('');
-  const [cellThreeOnChangeValue, setCellThreeOnChangeValue] = useState('');
-
+  let [cellOneOnChangeValue, setCellOneOnChangeValue] = useState('');
+  let [cellTwoOnChangeValue, setCellTwoOnChangeValue] = useState('');
+  let [cellThreeOnChangeValue, setCellThreeOnChangeValue] = useState('');
+  const [inputValues, setInputValues] = useState({});
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [credsList]);
+  useEffect(() => {
+    const initialValues = {};
+    credsList.forEach((ele) => {
+      initialValues[ele.mainId] = {
+        cellOne: ele.source,
+        cellTwo: ele.uniqueCredId,
+        cellThree: ele.credential,
+      };
+    });
+    setInputValues(initialValues);
+  }, [credsList]);
   const toggleRow = (mainId) => {
     setExpandedRows((prevState) => ({
       ...prevState,
@@ -31,6 +41,15 @@ const TableWithReadMore = () => {
       return content;
     }
     return `${content.substring(0, maxLength)}...`;
+  };
+  const handleInputChange = (mainId, field, value) => {
+    setInputValues((prevState) => ({
+      ...prevState,
+      [mainId]: {
+        ...prevState[mainId],
+        [field]: value,
+      },
+    }));
   };
 
   const copyToClipBoard = (params) => {
@@ -117,6 +136,14 @@ const TableWithReadMore = () => {
     dispatch(actionMap[field]({ ...cred, [field]: value }));
   };
 
+  const tumbade = (params) => {
+    console.log('🚀 ~ tumbade ~ params:', params);
+    console.log('🚀 ~ tumbade ~ cellOneOnChangeValue:1', cellOneOnChangeValue);
+    setCellOneOnChangeValue(params);
+    console.log('🚀 ~ tumbade ~ cellOneOnChangeValue:', cellOneOnChangeValue);
+    return;
+  };
+
   return (
     <div>
       <ToastContainer
@@ -179,8 +206,14 @@ const TableWithReadMore = () => {
                         <>
                           <input
                             type='text'
-                            value={ele.source}
-                            onChange={(e) => e}
+                            value={inputValues[ele.mainId]?.cellOne || ''}
+                            onChange={(e) =>
+                              handleInputChange(
+                                ele.mainId,
+                                'cellOne',
+                                e.currentTarget.value
+                              )
+                            }
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
@@ -188,7 +221,7 @@ const TableWithReadMore = () => {
                               dispatch(
                                 updateCredCellOne({
                                   mainId: ele.mainId,
-                                  source: e.currentTarget.value,
+                                  source: inputValues[ele.mainId]?.cellOne,
                                 })
                               );
                               saveEditCellOne(ele);
@@ -255,8 +288,14 @@ const TableWithReadMore = () => {
                         <>
                           <input
                             type='text'
-                            value={ele.uniqueCredId}
-                            onChange={(e) => e}
+                            value={inputValues[ele.mainId]?.cellTwo || ''}
+                            onChange={(e) =>
+                              handleInputChange(
+                                ele.mainId,
+                                'cellTwo',
+                                e.currentTarget.value
+                              )
+                            }
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
@@ -264,7 +303,8 @@ const TableWithReadMore = () => {
                               dispatch(
                                 updateCredCellTwo({
                                   mainId: ele.mainId,
-                                  uniqueCredId: e.currentTarget.value,
+                                  uniqueCredId:
+                                    inputValues[ele.mainId]?.cellTwo,
                                 })
                               );
                               saveEditCellTwo(ele);
@@ -331,8 +371,14 @@ const TableWithReadMore = () => {
                         <>
                           <input
                             type='text'
-                            value={ele.credential}
-                            onChange={(e) => e}
+                            value={inputValues[ele.mainId]?.cellThree || ''}
+                            onChange={(e) =>
+                              handleInputChange(
+                                ele.mainId,
+                                'cellThree',
+                                e.currentTarget.value
+                              )
+                            }
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
@@ -340,7 +386,8 @@ const TableWithReadMore = () => {
                               dispatch(
                                 updateCredCellThree({
                                   mainId: ele.mainId,
-                                  credential: e.currentTarget.value,
+                                  credential:
+                                    inputValues[ele.mainId]?.cellThree,
                                 })
                               );
                               saveEditCellThree(ele);

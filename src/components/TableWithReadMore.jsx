@@ -2,10 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  updateCredCellOne,
+  updateCredCellTwo,
+  updateCredCellThree,
+} from '../features/credsList/credsListSlice';
 const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
+  const [cellOneOnChangeValue, setCellOneOnChangeValue] = useState('');
+  const [cellTwoOnChangeValue, setCellTwoOnChangeValue] = useState('');
+  const [cellThreeOnChangeValue, setCellThreeOnChangeValue] = useState('');
+
+  const dispatch = useDispatch();
+
   useEffect(() => {}, [credsList]);
   const toggleRow = (mainId) => {
     setExpandedRows((prevState) => ({
@@ -94,6 +105,18 @@ const TableWithReadMore = () => {
       [ele.cellThreeID]: !prevState[ele.cellThreeID],
     }));
   };
+  const updateCredCell = (field, value, cred) => {
+    console.log('🚀 ~ updateCredCell ~ cred:', cred);
+    console.log('🚀 ~ updateCredCell ~ value:', value);
+    console.log('🚀 ~ updateCredCell ~ field:', field);
+    const actionMap = {
+      source: updateCredCellOne,
+      uniqueCredId: updateCredCellTwo,
+      credential: updateCredCellThree,
+    };
+    dispatch(actionMap[field]({ ...cred, [field]: value }));
+  };
+
   return (
     <div>
       <ToastContainer
@@ -114,7 +137,6 @@ const TableWithReadMore = () => {
       {/* Same as */}
       <ToastContainer />
       {credsList.length > 0 && (
-        
         <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
           <thead className='border-white bg-green-300 text-black'>
             <tr className='border-white'>
@@ -158,11 +180,17 @@ const TableWithReadMore = () => {
                           <input
                             type='text'
                             value={ele.source}
-                            onChange={(e) => setEditValue(e.target.value)}
+                            onChange={(e) => e}
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
                             onClick={(e) => {
+                              dispatch(
+                                updateCredCellOne({
+                                  mainId: ele.mainId,
+                                  source: e.currentTarget.value,
+                                })
+                              );
                               saveEditCellOne(ele);
                             }}
                             className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
@@ -228,11 +256,17 @@ const TableWithReadMore = () => {
                           <input
                             type='text'
                             value={ele.uniqueCredId}
-                            onChange={(e) => setEditValue(e.target.value)}
+                            onChange={(e) => e}
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
                             onClick={(e) => {
+                              dispatch(
+                                updateCredCellTwo({
+                                  mainId: ele.mainId,
+                                  uniqueCredId: e.currentTarget.value,
+                                })
+                              );
                               saveEditCellTwo(ele);
                             }}
                             className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
@@ -298,11 +332,17 @@ const TableWithReadMore = () => {
                           <input
                             type='text'
                             value={ele.credential}
-                            onChange={(e) => setEditValue(e.target.value)}
+                            onChange={(e) => e}
                             className='text-black w-3/4 mx-2 px-2'
                           />
                           <button
                             onClick={(e) => {
+                              dispatch(
+                                updateCredCellThree({
+                                  mainId: ele.mainId,
+                                  credential: e.currentTarget.value,
+                                })
+                              );
                               saveEditCellThree(ele);
                             }}
                             className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'

@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/credsList/credsList'
+import { configureStore } from '@reduxjs/toolkit';
+import credsListReducer from '../features/credsList/credsListSlice';
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    credsList: counterReducer,
+    credsList: credsListReducer,
   },
-})
+});
+
+export default store;

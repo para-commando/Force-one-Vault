@@ -6,7 +6,7 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
-import { setCredsList } from '../features/credsList/credsList';
+import { setCredsList } from '../features/credsList/credsListSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
 function Handler() {

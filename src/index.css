@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* overriding the predefined tags  in the below example upon using h4 tag anywhere in the code it will be of green color due to this*/
+@layer base {
+  h4 {
+    @apply text-2xl text-green-300;
+  }
+ 
+}
+
+@layer components{
+  /* container: This utility class applies a responsive max-width and center alignment based on the screen size. */
+  .myContainer{
+    @apply container px-36 py-12;
+  }
+}

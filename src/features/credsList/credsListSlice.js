@@ -41,12 +41,13 @@ export const credsListSlice = createSlice({
       localStorage.setItem('creds', JSON.stringify(state.value));
     },
     deleteCred: (state, action) => {
-      alert('Are you sure you want to delete this credential?')
-      const newArray = state.value.filter(
-        (cred) => cred.mainId != action.payload.mainId
-      );
-     state.value = [...newArray]
-      localStorage.setItem('creds', JSON.stringify(state.value));
+      if (confirm('Delete this credential?')) {
+        const newArray = state.value.filter(
+          (cred) => cred.mainId != action.payload.mainId
+        );
+        state.value = [...newArray];
+        localStorage.setItem('creds', JSON.stringify(state.value));
+      }
     },
   },
 });
@@ -56,6 +57,6 @@ export const {
   updateCredCellOne,
   updateCredCellTwo,
   updateCredCellThree,
-  deleteCred
+  deleteCred,
 } = credsListSlice.actions;
 export default credsListSlice.reducer;

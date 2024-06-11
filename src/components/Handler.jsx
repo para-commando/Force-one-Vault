@@ -34,13 +34,7 @@ function Handler() {
   }, []);
 
   const saveCredential = () => {
-    const aaa11 = localStorage.getItem('creds');
-     const creds = {
-      source: '',
-      uniqueCredId: '',
-      credential: '',
-    };
-     if (vaultCell.source || vaultCell.uniqueCredId || vaultCell.credential) {
+    if (vaultCell.source || vaultCell.uniqueCredId || vaultCell.credential) {
       vaultCell.mainId = uuidv4();
       vaultCell.cellTwoID = uuidv4();
       vaultCell.cellOneID = uuidv4();
@@ -52,7 +46,11 @@ function Handler() {
 
       const aaa = localStorage.getItem('creds');
       console.log('🚀 ~ saveCredential ~ aaa:', aaa);
-      setVaultCell(creds);
+      setVaultCell({
+        source: '',
+        uniqueCredId: '',
+        credential: '',
+      });
     } else {
       alert('All fields cannot be empty!');
     }

@@ -12,9 +12,6 @@ const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
-  let [cellOneOnChangeValue, setCellOneOnChangeValue] = useState('');
-  let [cellTwoOnChangeValue, setCellTwoOnChangeValue] = useState('');
-  let [cellThreeOnChangeValue, setCellThreeOnChangeValue] = useState('');
   const [inputValues, setInputValues] = useState({});
   const dispatch = useDispatch();
 
@@ -59,17 +56,22 @@ const TableWithReadMore = () => {
   };
 
   const copyToClipBoard = (params) => {
+    console.log('🚀 ~ copyToClipBoard ~ params:', params);
     navigator.clipboard.writeText(params);
-    toast('Copied To Clipboard!', {
-      position: 'top-right',
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'colored',
-    });
+    if (params) {
+      toast('Copied To Clipboard!', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    } else {
+      alert('Empty field value!');
+    }
   };
 
   const saveEditCellOne = (ele) => {

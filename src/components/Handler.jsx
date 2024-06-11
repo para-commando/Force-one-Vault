@@ -21,6 +21,7 @@ function Handler() {
     cellOneID: '',
     cellTwoID: '',
     cellThreeID: '',
+    isHidden:true
   });
   const credsList = useSelector((state) => state.credsList.value);
 
@@ -40,6 +41,7 @@ function Handler() {
       vaultCell.cellOneID = uuidv4();
       vaultCell.cellThreeID = uuidv4();
       vaultCell.isEditNotClicked = true;
+      vaultCell.isHidden = true;
 
       dispatch(setCredsList([...credsList, vaultCell]));
       localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
@@ -76,7 +78,7 @@ function Handler() {
   };
   return (
     <>
-      <div className='bg-armyBackgroundColor h-full relative py-20'>
+      <div className='bg-armyBackgroundColor h-full relative py-20 '>
         <div className='mx-auto max-w-4xl bg-gray-950 text-white px-28 pb-7'>
           <div className='logo flex flex-col items-center justify-center gap-2'>
             <div className='flex items-center text-2xl'>

@@ -49,6 +49,14 @@ export const credsListSlice = createSlice({
         localStorage.setItem('creds', JSON.stringify(state.value));
       }
     },
+    togglePasswordVisibility: (state, action) => {
+      const index = state.value.findIndex(
+        (cred) => cred.mainId === action.payload.mainId
+      );
+      if (index !== -1) {
+        state.value[index].isHidden = !action.payload.isHidden;
+      }
+    },
   },
 });
 
@@ -58,5 +66,6 @@ export const {
   updateCredCellTwo,
   updateCredCellThree,
   deleteCred,
+  togglePasswordVisibility,
 } = credsListSlice.actions;
 export default credsListSlice.reducer;

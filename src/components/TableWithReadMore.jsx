@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,14 +7,18 @@ import {
   updateCredCellTwo,
   updateCredCellThree,
   deleteCred,
+  togglePasswordVisibility,
 } from '../features/credsList/credsListSlice';
+import hidePasswordIcon from '../assets/hidePassword.png';
+import showPasswordIcon from '../assets/showPasswordIcon.png';
+
 const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
   const [expandedRows, setExpandedRows] = useState({});
   const [onEditRows, setOnEditRows] = useState({});
   const [inputValues, setInputValues] = useState({});
   const dispatch = useDispatch();
-
+  const hidePasswordIconRef = useRef('');
   useEffect(() => {
     const initialValues = {};
     console.log('🚀 ~ useEffect ~ credsList:', credsList);
@@ -131,6 +135,20 @@ const TableWithReadMore = () => {
       ...prevState,
       [ele.cellThreeID]: !prevState[ele.cellThreeID],
     }));
+  };
+
+  const togglePasswordVisibilityFunc = (ele) => {
+    dispatch(
+      togglePasswordVisibility({
+        mainId: ele.mainId,
+        isHidden: ele.isHidden,
+      })
+    );
+    if (hidePasswordIconRef.current.src.includes('showPasswordIcon.png')) {
+      hidePasswordIconRef.current.src = hidePasswordIcon;
+      return;
+    }
+    hidePasswordIconRef.current.src = showPasswordIcon;
   };
 
   return (
@@ -397,10 +415,28 @@ const TableWithReadMore = () => {
                         </>
                       ) : (
                         <>
-                          <span className='pb-1 text-wrap break-words w-3/4'>
-                            {renderCellContent(ele.credential, isExpanded)}
+                          <span className='pb-1 text-wrap break-words w-[70%]'>
+                            {ele.isHidden
+                              ? renderCellContent(
+                                  '#'.repeat(ele.credential.length),
+                                  isExpanded
+                                )
+                              : renderCellContent(ele.credential, isExpanded)}
                           </span>
-                          <span className='invert cursor-pointer'>
+                          <div className='invert cursor-pointer flex gap-1 items-center px-2'>
+                            <span
+                              onClick={(e) => {
+                                togglePasswordVisibilityFunc(ele);
+                              }}
+                              className='mr-3'
+                            >
+                              <img
+                                ref={hidePasswordIconRef}
+                                src={showPasswordIcon}
+                                className='w-6 h-6 cursor-pointer'
+                                alt='Toggle Credential'
+                              />
+                            </span>
                             <span
                               onClick={() => {
                                 copyToClipBoard(ele.credential);
@@ -411,7 +447,6 @@ const TableWithReadMore = () => {
                                   width: '25px',
                                   height: '25px',
                                   paddingTop: '3px',
-                                  paddingRight: '6px',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
@@ -433,7 +468,7 @@ const TableWithReadMore = () => {
                                 }}
                               ></lord-icon>
                             </span>
-                          </span>
+                          </div>
                         </>
                       )}
                     </div>

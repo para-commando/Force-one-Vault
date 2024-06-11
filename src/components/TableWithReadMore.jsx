@@ -6,6 +6,7 @@ import {
   updateCredCellOne,
   updateCredCellTwo,
   updateCredCellThree,
+  deleteCred,
 } from '../features/credsList/credsListSlice';
 const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
@@ -19,14 +20,19 @@ const TableWithReadMore = () => {
 
   useEffect(() => {
     const initialValues = {};
-    credsList.forEach((ele) => {
-      initialValues[ele.mainId] = {
-        cellOne: ele.source,
-        cellTwo: ele.uniqueCredId,
-        cellThree: ele.credential,
-      };
-    });
-    setInputValues(initialValues);
+    console.log('🚀 ~ useEffect ~ credsList:', credsList);
+
+    if (credsList.length) {
+      console.log('🚀 ~ useEffect ~ credsList:', credsList);
+      credsList.forEach((ele) => {
+        initialValues[ele.mainId] = {
+          cellOne: ele.source,
+          cellTwo: ele.uniqueCredId,
+          cellThree: ele.credential,
+        };
+      });
+      setInputValues(initialValues);
+    }
   }, [credsList]);
   const toggleRow = (mainId) => {
     setExpandedRows((prevState) => ({
@@ -124,25 +130,6 @@ const TableWithReadMore = () => {
       [ele.cellThreeID]: !prevState[ele.cellThreeID],
     }));
   };
-  const updateCredCell = (field, value, cred) => {
-    console.log('🚀 ~ updateCredCell ~ cred:', cred);
-    console.log('🚀 ~ updateCredCell ~ value:', value);
-    console.log('🚀 ~ updateCredCell ~ field:', field);
-    const actionMap = {
-      source: updateCredCellOne,
-      uniqueCredId: updateCredCellTwo,
-      credential: updateCredCellThree,
-    };
-    dispatch(actionMap[field]({ ...cred, [field]: value }));
-  };
-
-  const tumbade = (params) => {
-    console.log('🚀 ~ tumbade ~ params:', params);
-    console.log('🚀 ~ tumbade ~ cellOneOnChangeValue:1', cellOneOnChangeValue);
-    setCellOneOnChangeValue(params);
-    console.log('🚀 ~ tumbade ~ cellOneOnChangeValue:', cellOneOnChangeValue);
-    return;
-  };
 
   return (
     <div>
@@ -171,6 +158,7 @@ const TableWithReadMore = () => {
               <th className='border-white'>Source</th>
               <th className='border-white'>Unique Credential ID</th>
               <th className='border-white'>Credential</th>
+              <th className='border-white'>Delete</th>
             </tr>
           </thead>
           <tbody className='border-white bg-gray-900'>
@@ -447,6 +435,23 @@ const TableWithReadMore = () => {
                         </>
                       )}
                     </div>
+                  </td>
+                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                    <button
+                      className=' hover:underline mt-2'
+                      onClick={() =>
+                        dispatch(deleteCred({ mainId: ele.mainId }))
+                      }
+                    >
+                      <span title='Delete Credential' className=' '>
+                        <lord-icon
+                          src='https://cdn.lordicon.com/zxvuvcnc.json'
+                          trigger='hover'
+                          state='hover-cross-2'
+                          colors='primary:#FF0000'
+                        ></lord-icon>
+                      </span>
+                    </button>
                   </td>
                 </tr>
               );

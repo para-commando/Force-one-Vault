@@ -7,7 +7,7 @@ import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
 import { setCredsList } from '../features/credsList/credsListSlice';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 function Handler() {
   const credentialShowIconImgRef = useRef();
@@ -22,8 +22,9 @@ function Handler() {
     cellTwoID: '',
     cellThreeID: '',
   });
-  const credsList = useSelector((state) => state.credsList.value)
-  const dispatch = useDispatch()
+  const credsList = useSelector((state) => state.credsList.value);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let creds = localStorage.getItem('creds');
@@ -34,23 +35,27 @@ function Handler() {
 
   const saveCredential = () => {
     const aaa11 = localStorage.getItem('creds');
-    console.log('🚀 ~ saveCredential ~ aaa11:', aaa11);
-    const creds = {
-      source: vaultCell.source || '',
-      uniqueCredId: vaultCell.uniqueCredId || '',
-      credential: vaultCell.credential || '',
+     const creds = {
+      source: '',
+      uniqueCredId: '',
+      credential: '',
     };
-    vaultCell.mainId = uuidv4();
-    vaultCell.cellTwoID = uuidv4();
-    vaultCell.cellOneID = uuidv4();
-    vaultCell.cellThreeID = uuidv4();
-    vaultCell.isEditNotClicked = true;
-    
-    dispatch(setCredsList([...credsList, vaultCell]))
-    localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
+     if (vaultCell.source || vaultCell.uniqueCredId || vaultCell.credential) {
+      vaultCell.mainId = uuidv4();
+      vaultCell.cellTwoID = uuidv4();
+      vaultCell.cellOneID = uuidv4();
+      vaultCell.cellThreeID = uuidv4();
+      vaultCell.isEditNotClicked = true;
 
-    const aaa = localStorage.getItem('creds');
-    console.log('🚀 ~ saveCredential ~ aaa:', aaa);
+      dispatch(setCredsList([...credsList, vaultCell]));
+      localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
+
+      const aaa = localStorage.getItem('creds');
+      console.log('🚀 ~ saveCredential ~ aaa:', aaa);
+      setVaultCell(creds);
+    } else {
+      alert('All fields cannot be empty!');
+    }
   };
 
   const showCredential = () => {

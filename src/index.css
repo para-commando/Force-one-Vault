@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* overriding the predefined tags  in the below example upon using h4 tag anywhere in the code it will be of green color due to this*/
 @layer base {
   h4 {
     @apply text-2xl text-green-300;
@@ -12,7 +11,6 @@
 
 @layer components {
 
-  /* container: This utility class applies a responsive max-width and center alignment based on the screen size. */
   .myContainer {
     @apply container px-36 py-12;
   }
@@ -21,18 +19,98 @@
 @media (max-width: 1100px) {
   .responsive-styles-1100-font-text {
     @apply text-[20px];
-    /* Add more Tailwind utility classes as needed */
+
   }
 
   .responsive-styles-1100-navbar-links {
     @apply gap-6;
-    /* Add more Tailwind utility classes as needed */
+
   }
 
   .responsive-styles-1100-navbar-logo-img {
     @apply w-14 h-14 mx-2 mb-3;
-    /* Add more Tailwind utility classes as needed */
+
+  }
+}
+
+@media (max-width: 650px) {
+  .responsive-styles-650-font-text {
+    @apply text-[15px];
+
+  }
+
+  .responsive-styles-650-navbar-links {
+    @apply gap-5;
+
+  }
+
+  .responsive-styles-650-navbar-logo-img {
+    @apply w-10 h-10 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-650-navbar-gen {
+    @apply h-14;
+
   }
 }
 
 
+
+@media (max-width: 500px) {
+  .responsive-styles-500-font-text {
+    @apply text-[12px];
+
+  }
+
+  .responsive-styles-500-navbar-links {
+    @apply gap-5;
+
+  }
+
+  .responsive-styles-500-navbar-logo-img {
+    @apply w-10 h-10 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-500-navbar-gen {
+    @apply h-14;
+
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-styles-400-font-text {
+    @apply text-[9px];
+
+  }
+
+  .responsive-styles-400-navbar-links {
+    @apply gap-3;
+
+  }
+
+  .responsive-styles-400-navbar-logo-img {
+    @apply w-8 h-8 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-400-navbar-gen {
+    @apply h-12;
+
+  }
+}
+
+@media (max-width: 320px) {
+  .responsive-styles-400-font-text {
+    @apply text-[9px];
+
+  }
+
+  .responsive-styles-320-navbar-links {
+    @apply hidden;
+
+  }
+
+
+}

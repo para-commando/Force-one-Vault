@@ -7,12 +7,32 @@
   h4 {
     @apply text-2xl text-green-300;
   }
- 
+
 }
 
-@layer components{
+@layer components {
+
   /* container: This utility class applies a responsive max-width and center alignment based on the screen size. */
-  .myContainer{
+  .myContainer {
     @apply container px-36 py-12;
   }
 }
+
+@media (max-width: 1100px) {
+  .responsive-styles-1100-font-text {
+    @apply text-[20px];
+    /* Add more Tailwind utility classes as needed */
+  }
+
+  .responsive-styles-1100-navbar-links {
+    @apply gap-6;
+    /* Add more Tailwind utility classes as needed */
+  }
+
+  .responsive-styles-1100-navbar-logo-img {
+    @apply w-14 h-14 mx-2 mb-3;
+    /* Add more Tailwind utility classes as needed */
+  }
+}
+
+

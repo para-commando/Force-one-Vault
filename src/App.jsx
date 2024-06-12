@@ -10,8 +10,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <Handler />
-      <Footer />
+      {/* <Handler />
+      <Footer /> */}
     </>
   );
 }

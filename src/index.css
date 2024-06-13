@@ -104,7 +104,66 @@
   .handler-passwords-display-empty-list-display-img-base-styles{
     @apply  w-44 h-44 invert
   }
+  .table-with-read-more-toggle-col-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
 
+  .table-with-read-more-source-cell-base-styles{
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-source-edit-cell-base-styles{
+    @apply text-black w-3/4 mx-2 px-2
+  }
+
+  .table-with-read-more-source-save-button-base-styles{
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+  .table-with-read-more-source-cancel-button-base-styles{
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-source-content-base-styles{
+    @apply pb-1 text-wrap break-words w-3/4
+  }
+
+  .table-with-read-more-unique-cred-id-cell-base-styles{
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-unique-cred-id-edit-cell-base-styles{
+    @apply text-black w-3/4 mx-2 px-2
+  }
+  .table-with-read-more-unique-cred-id-save-button-base-styles{
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+  .table-with-read-more-unique-cred-id-cancel-button-base-styles{
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+  .table-with-read-more-unique-cred-id-content-base-styles{
+    @apply pb-1 text-wrap break-words w-3/4
+  }
+  .table-with-read-more-cred-cell-base-styles{
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-cred-edit-cell-base-styles{
+    @apply text-black w-3/4 mx-2 px-2
+  }
+
+  .table-with-read-more-cred-save-button-base-styles{
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+  .table-with-read-more-cred-cancel-button-base-styles{
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+  .table-with-read-more-cred-content-base-styles{
+    @apply pb-1 text-wrap break-words w-[70%]
+  }
+
+  .table-with-read-more-cred-content-eye-img-styles{
+    @apply w-6 h-6 cursor-pointer
+  }
 }
 
 @media (max-width: 1100px) {

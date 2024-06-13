@@ -164,6 +164,10 @@
   .table-with-read-more-cred-content-eye-img-styles{
     @apply w-6 h-6 cursor-pointer
   }
+
+  .table-with-read-more-delete-cell-base-styles{
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
 }
 
 @media (max-width: 1100px) {

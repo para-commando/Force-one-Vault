@@ -473,7 +473,7 @@ const TableWithReadMore = () => {
                       )}
                     </div>
                   </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-delete-cell-base-styles'>
                     <button
                       className=' hover:underline mt-2'
                       onClick={() =>

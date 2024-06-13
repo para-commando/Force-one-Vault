@@ -98,9 +98,9 @@ function Handler() {
             </div>
           </div>
 
-          <div className='handler-input-fields-section-base-styles'>
+          <div className='handler-input-fields-section-base-styles handler-1100-input-fields-section-base-styles'>
             <input
-              className='handler-input-fields-source-section-base-styles'
+              className='handler-input-fields-source-section-base-styles handler-1100-input-fields-source-section-base-styles'
               value={vaultCell.source}
               onChange={(e) => handleInputData(e)}
               placeholder='Enter Source URL/Info'
@@ -110,7 +110,7 @@ function Handler() {
             />
             <div className='flex gap-3 w-full'>
               <input
-                className='handler-input-fields-unique-creds-id-section-base-styles'
+                className='handler-input-fields-unique-creds-id-section-base-styles handler-1100-input-fields-unique-creds-id-section-base-styles'
                 value={vaultCell.uniqueCredId}
                 onChange={(e) => handleInputData(e)}
                 placeholder='Unique Credential-id'
@@ -118,10 +118,10 @@ function Handler() {
                 name='uniqueCredId'
                 id=''
               />
-              <div className='handler-input-fields-creds-section-base-styles '>
+              <div className='handler-input-fields-creds-section-base-styles handler-1100-input-fields-creds-section-base-styles '>
                 <input
                   ref={credentialRef}
-                  className='handler-input-fields-creds-input-section-base-styles '
+                  className='handler-input-fields-creds-input-section-base-styles handler-1100-input-fields-creds-input-section-base-styles'
                   value={vaultCell.credential}
                   onChange={(e) => handleInputData(e)}
                   placeholder='Credential'
@@ -133,7 +133,7 @@ function Handler() {
                   <img
                     ref={credentialShowIconImgRef}
                     src={credentialShowIcon}
-                    className='handler-input-fields-creds-input-eye-img-section-base-styles'
+                    className='handler-input-fields-creds-input-eye-img-section-base-styles handler-1100-input-fields-creds-input-eye-img-section-base-styles'
                     alt='Show Credential'
                   />
                 </span>
@@ -142,13 +142,16 @@ function Handler() {
 
             <button
               onClick={saveCredential}
-              className='handler-input-fields-add-creds-section-base-styles'
+              className='handler-input-fields-add-creds-section-base-styles handler-1100-input-fields-add-creds-section-base-styles'
             >
-              <lord-icon
-                src='https://cdn.lordicon.com/jgnvfzqg.json'
-                trigger='hover'
-                colors='primary:#ffffff'
-              ></lord-icon>
+              <div className='handler-input-fields-add-creds-icon-base-styles handler-1100-input-fields-add-creds-icon-base-styles'>
+                <lord-icon
+                  src='https://cdn.lordicon.com/jgnvfzqg.json'
+                  trigger='hover'
+                  colors='primary:#ffffff'
+                  style={{ width: '100%', height: '100%' }}
+                ></lord-icon>
+              </div>
               Add Credential
             </button>
           </div>

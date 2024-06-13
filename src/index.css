@@ -2,17 +2,338 @@
 @tailwind components;
 @tailwind utilities;
 
-/* overriding the predefined tags  in the below example upon using h4 tag anywhere in the code it will be of green color due to this*/
 @layer base {
   h4 {
     @apply text-2xl text-green-300;
   }
- 
+
 }
 
-@layer components{
-  /* container: This utility class applies a responsive max-width and center alignment based on the screen size. */
-  .myContainer{
+@layer components {
+  .myContainer {
     @apply container px-36 py-12;
   }
+
+  .navbar-base-styles {
+    @apply bg-[#1a200e] text-white flex justify-between items-center py-5 h-20 px-9 text-xl sticky top-0 z-10
+  }
+
+  .navbar-logo-base-styles {
+    @apply font-bold flex items-center
+  }
+
+  .navbar-logo-img-base-styles {
+    @apply w-14 h-14 mx-2 mb-3
+  }
+
+  .navbar-links-base-styles {
+    @apply flex gap-14
+  }
+
+  .navbar-links-hover-effect {
+    @apply hover:font-bold
+  }
+
+  .handler-base-styles {
+    @apply bg-armyBackgroundColor h-full relative py-20
+  }
+
+  .handler-add-cred-section-base-styles {
+    @apply mx-auto max-w-4xl bg-gray-950 text-white px-28 pb-7
+  }
+
+  .handler-logo-section-base-styles {
+    @apply flex flex-col items-center justify-center gap-2
+  }
+
+  .handler-logo-title-section-base-styles {
+    @apply flex items-center text-2xl
+  }
+
+  .handler-logo-sub-title-section-base-styles {
+    @apply text-center mt-0 text-[12px]
+  }
+
+  .handler-logo-title-text-section-base-styles {
+    @apply pt-6 font-bold
+  }
+
+  .handler-logo-title-img-section-base-styles {
+    @apply w-16 h-16 mx-2
+  }
+
+  .handler-input-fields-section-base-styles {
+    @apply text-white flex flex-col py-4 gap-4 items-center
+  }
+
+  .handler-input-fields-source-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-full
+  }
+
+  .handler-input-fields-unique-creds-id-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-1/2
+  }
+
+  .handler-input-fields-creds-section-base-styles {
+    @apply flex items-center relative w-1/2
+  }
+
+  .handler-input-fields-creds-input-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-full pr-10
+  }
+
+  .handler-input-fields-creds-input-eye-img-section-base-styles {
+    @apply w-8 h-8 cursor-pointer
+  }
+
+  .handler-input-fields-add-creds-section-base-styles {
+    @apply flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300
+  }
+
+  .handler-passwords-display-section-base-styles {
+    @apply justify-center px-5
+  }
+
+  .handler-passwords-display-heading-base-styles {
+    @apply text-white font-bold text-2xl p-5 text-center
+  }
+
+  .handler-passwords-display-empty-list-display-base-styles {
+    @apply text-white text-[14px] flex flex-col justify-center items-center
+  }
+
+  .handler-passwords-display-empty-list-display-img-base-styles {
+    @apply w-44 h-44 invert
+  }
+
+  .table-with-read-more-toggle-col-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-source-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-source-edit-cell-base-styles {
+    @apply text-black w-3/4 mx-2 px-2
+  }
+
+  .table-with-read-more-source-save-button-base-styles {
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-source-cancel-button-base-styles {
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-source-content-base-styles {
+    @apply pb-1 text-wrap break-words w-3/4
+  }
+
+  .table-with-read-more-unique-cred-id-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-unique-cred-id-edit-cell-base-styles {
+    @apply text-black w-3/4 mx-2 px-2
+  }
+
+  .table-with-read-more-unique-cred-id-save-button-base-styles {
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-unique-cred-id-cancel-button-base-styles {
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-unique-cred-id-content-base-styles {
+    @apply pb-1 text-wrap break-words w-3/4
+  }
+
+  .table-with-read-more-cred-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .table-with-read-more-cred-edit-cell-base-styles {
+    @apply text-black w-3/4 mx-2 px-2
+  }
+
+  .table-with-read-more-cred-save-button-base-styles {
+    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-cred-cancel-button-base-styles {
+    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+  }
+
+  .table-with-read-more-cred-content-base-styles {
+    @apply pb-1 text-wrap break-words w-[70%]
+  }
+
+  .table-with-read-more-cred-content-eye-img-styles {
+    @apply w-6 h-6 cursor-pointer
+  }
+
+  .table-with-read-more-delete-cell-base-styles {
+    @apply border-2 py-2 border-black text-center max-w-32
+  }
+
+  .handler-input-fields-add-creds-icon-base-styles{
+    @apply w-8 h-8
+  }
+}
+
+@media (max-width: 1100px) {
+  .responsive-styles-1100-font-text {
+    @apply text-[18px];
+
+  }
+
+  .responsive-styles-1100-navbar-links {
+    @apply gap-6;
+
+  }
+
+  .responsive-styles-1100-navbar-logo-img {
+    @apply w-14 h-14 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-1100-navbar-gen {
+    @apply h-16;
+
+  }
+
+  .handler-1100-base-styles {
+    @apply bg-armyBackgroundColor h-full relative py-16
+  }
+
+  .handler-1100-add-cred-section-styles {
+    @apply mx-auto max-w-3xl bg-gray-950 text-white px-20 pb-7
+  }
+
+  .handler-1100-logo-section-styles {
+    @apply flex flex-col items-center justify-center gap-1
+  }
+
+  .handler-1100-logo-title-section-styles {
+    @apply flex items-center text-xl
+  }
+
+  .handler-1100-logo-title-text-section-styles {}
+
+  .handler-1100-logo-title-img-section-styles {
+    @apply w-14 h-14 mx-2
+  }
+
+  .handler-1100-logo-sub-title-section-styles {
+    @apply text-[10px]
+  }
+
+  .handler-1100-input-fields-section-base-styles {
+    @apply gap-3
+  }
+
+  .handler-1100-input-fields-source-section-base-styles {
+    @apply h-6 text-[13px] border-[3px]
+  }
+  .handler-1100-input-fields-unique-creds-id-section-base-styles{
+    @apply h-6 text-[13px] border-[3px]
+  }
+  .handler-1100-input-fields-creds-section-base-styles{
+    @apply h-6 text-[13px] 
+  }
+  .handler-1100-input-fields-creds-input-section-base-styles {
+    @apply   border-[3px] pr-8
+  }
+  .handler-1100-input-fields-creds-input-eye-img-section-base-styles {
+    @apply w-6 h-6 
+  }
+  .handler-input-fields-add-creds-section-base-styles{
+    @apply  px-3 py-[2px] w-fit gap-2 text-[15px]
+  }
+  .handler-1100-input-fields-add-creds-icon-base-styles{
+    @apply w-6 h-6
+  }
+}
+
+@media (max-width: 650px) {
+  .responsive-styles-650-font-text {
+    @apply text-[15px];
+
+  }
+
+  .responsive-styles-650-navbar-links {
+    @apply gap-5;
+
+  }
+
+  .responsive-styles-650-navbar-logo-img {
+    @apply w-10 h-10 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-650-navbar-gen {
+    @apply h-14;
+
+  }
+}
+
+
+
+@media (max-width: 500px) {
+  .responsive-styles-500-font-text {
+    @apply text-[12px];
+
+  }
+
+  .responsive-styles-500-navbar-links {
+    @apply gap-5;
+
+  }
+
+  .responsive-styles-500-navbar-logo-img {
+    @apply w-10 h-10 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-500-navbar-gen {
+    @apply h-14;
+
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-styles-400-font-text {
+    @apply text-[9px];
+
+  }
+
+  .responsive-styles-400-navbar-links {
+    @apply gap-3;
+
+  }
+
+  .responsive-styles-400-navbar-logo-img {
+    @apply w-8 h-8 mx-2 mb-3;
+
+  }
+
+  .responsive-styles-400-navbar-gen {
+    @apply h-12;
+
+  }
+}
+
+@media (max-width: 320px) {
+  .responsive-styles-400-font-text {
+    @apply text-[9px];
+
+  }
+
+  .responsive-styles-320-navbar-links {
+    @apply hidden;
+
+  }
+
 }

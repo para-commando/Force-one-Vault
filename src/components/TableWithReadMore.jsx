@@ -186,7 +186,7 @@ const TableWithReadMore = () => {
               const isExpanded = !!expandedRows[ele.mainId];
               return (
                 <tr key={ele.mainId} className='border-white text-center'>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-toggle-col-cell-base-styles'>
                     <button
                       className='text-blue-500 hover:underline mt-2'
                       onClick={() => toggleRow(ele.mainId)}
@@ -208,7 +208,7 @@ const TableWithReadMore = () => {
                       )}
                     </button>
                   </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-source-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellOneID] ? (
                         <>
@@ -222,7 +222,7 @@ const TableWithReadMore = () => {
                                 e.currentTarget.value
                               )
                             }
-                            className='text-black w-3/4 mx-2 px-2'
+                            className='table-with-read-more-source-edit-cell-base-styles'
                           />
                           <button
                             onClick={(e) => {
@@ -234,7 +234,7 @@ const TableWithReadMore = () => {
                               );
                               saveEditCellOne(ele);
                             }}
-                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-source-save-button-base-styles'
                           >
                             Save
                           </button>
@@ -242,14 +242,14 @@ const TableWithReadMore = () => {
                             onClick={(e) => {
                               cancelEditCellOne(ele);
                             }}
-                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-source-cancel-button-base-styles'
                           >
                             Cancel
                           </button>
                         </>
                       ) : (
                         <>
-                          <span className='pb-1 text-wrap break-words w-3/4'>
+                          <span className='table-with-read-more-source-content-base-styles'>
                             {renderCellContent(ele.source, isExpanded)}
                           </span>
                           <span className='invert cursor-pointer'>
@@ -290,7 +290,7 @@ const TableWithReadMore = () => {
                       )}
                     </div>
                   </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-unique-cred-id-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellTwoID] ? (
                         <>
@@ -304,7 +304,7 @@ const TableWithReadMore = () => {
                                 e.currentTarget.value
                               )
                             }
-                            className='text-black w-3/4 mx-2 px-2'
+                            className='table-with-read-more-unique-cred-id-edit-cell-base-styles'
                           />
                           <button
                             onClick={(e) => {
@@ -317,7 +317,7 @@ const TableWithReadMore = () => {
                               );
                               saveEditCellTwo(ele);
                             }}
-                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-unique-cred-id-save-button-base-styles '
                           >
                             Save
                           </button>
@@ -325,14 +325,14 @@ const TableWithReadMore = () => {
                             onClick={(e) => {
                               cancelEditCellTwo(ele);
                             }}
-                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-unique-cred-id-cancel-button-base-styles'
                           >
                             Cancel
                           </button>
                         </>
                       ) : (
                         <>
-                          <span className='pb-1 text-wrap break-words w-3/4'>
+                          <span className='table-with-read-more-unique-cred-id-content-base-styles'>
                             {renderCellContent(ele.uniqueCredId, isExpanded)}
                           </span>
                           <span className='invert cursor-pointer'>
@@ -373,7 +373,7 @@ const TableWithReadMore = () => {
                       )}
                     </div>
                   </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-cred-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellThreeID] ? (
                         <>
@@ -387,7 +387,7 @@ const TableWithReadMore = () => {
                                 e.currentTarget.value
                               )
                             }
-                            className='text-black w-3/4 mx-2 px-2'
+                            className='table-with-read-more-cred-edit-cell-base-styles'
                           />
                           <button
                             onClick={(e) => {
@@ -400,7 +400,7 @@ const TableWithReadMore = () => {
                               );
                               saveEditCellThree(ele);
                             }}
-                            className='mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-cred-save-button-base-styles'
                           >
                             Save
                           </button>
@@ -408,14 +408,14 @@ const TableWithReadMore = () => {
                             onClick={(e) => {
                               cancelEditCellThree(ele);
                             }}
-                            className='mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]'
+                            className='table-with-read-more-cred-cancel-button-base-styles '
                           >
                             Cancel
                           </button>
                         </>
                       ) : (
                         <>
-                          <span className='pb-1 text-wrap break-words w-[70%]'>
+                          <span className='table-with-read-more-cred-content-base-styles '>
                             {ele.isHidden
                               ? renderCellContent(
                                   '#'.repeat(ele.credential.length),
@@ -433,7 +433,7 @@ const TableWithReadMore = () => {
                               <img
                                 ref={hidePasswordIconRef}
                                 src={showPasswordIcon}
-                                className='w-6 h-6 cursor-pointer'
+                                className='table-with-read-more-cred-content-eye-img-styles'
                                 alt='Toggle Credential'
                               />
                             </span>
@@ -473,7 +473,7 @@ const TableWithReadMore = () => {
                       )}
                     </div>
                   </td>
-                  <td className='border-2 py-2 border-black text-center max-w-32'>
+                  <td className='table-with-read-more-delete-cell-base-styles'>
                     <button
                       className=' hover:underline mt-2'
                       onClick={() =>

@@ -21,7 +21,7 @@ function Handler() {
     cellOneID: '',
     cellTwoID: '',
     cellThreeID: '',
-    isHidden:true
+    isHidden: true,
   });
   const credsList = useSelector((state) => state.credsList.value);
 
@@ -78,23 +78,29 @@ function Handler() {
   };
   return (
     <>
-      <div className='bg-armyBackgroundColor h-full relative py-20 '>
-        <div className='mx-auto max-w-4xl bg-gray-950 text-white px-28 pb-7'>
-          <div className='logo flex flex-col items-center justify-center gap-2'>
-            <div className='flex items-center text-2xl'>
-              <span className='pt-6 font-bold'> Force-One-Vault</span>
+      <div className='handler-base-styles handler-1100-base-styles'>
+        <div className='handler-add-cred-section-base-styles handler-1100-add-cred-section-styles'>
+          <div className='handler-logo-section-base-styles handler-1100-logo-section-styles'>
+            <div className='handler-logo-title-section-base-styles handler-1100-logo-title-section-styles'>
+              <span className='handler-logo-title-text-section-base-styles handler-1100-logo-title-text-section-styles'>
+                Force-One-Vault
+              </span>
               <span>
-                <img src={tankLogo} alt='' className='w-16 h-16 mx-2  ' />
+                <img
+                  src={tankLogo}
+                  alt=''
+                  className='handler-logo-title-img-section-base-styles handler-1100-logo-title-img-section-styles'
+                />
               </span>
             </div>
-            <div className='text-center mt-0 text-[12px]'>
+            <div className='handler-logo-sub-title-section-base-styles handler-1100-logo-sub-title-section-styles'>
               <p>Elite Protection For Your Data</p>
             </div>
           </div>
 
-          <div className='text-white flex flex-col py-4 gap-4 items-center'>
+          <div className='handler-input-fields-section-base-styles handler-1100-input-fields-section-base-styles'>
             <input
-              className='rounded-full border-4 border-green-300 text-black text-center w-full'
+              className='handler-input-fields-source-section-base-styles handler-1100-input-fields-source-section-base-styles'
               value={vaultCell.source}
               onChange={(e) => handleInputData(e)}
               placeholder='Enter Source URL/Info'
@@ -104,7 +110,7 @@ function Handler() {
             />
             <div className='flex gap-3 w-full'>
               <input
-                className='rounded-full border-4 border-green-300 text-black text-center w-1/2'
+                className='handler-input-fields-unique-creds-id-section-base-styles handler-1100-input-fields-unique-creds-id-section-base-styles'
                 value={vaultCell.uniqueCredId}
                 onChange={(e) => handleInputData(e)}
                 placeholder='Unique Credential-id'
@@ -112,10 +118,10 @@ function Handler() {
                 name='uniqueCredId'
                 id=''
               />
-              <div className='flex items-center relative w-1/2'>
+              <div className='handler-input-fields-creds-section-base-styles handler-1100-input-fields-creds-section-base-styles '>
                 <input
                   ref={credentialRef}
-                  className='rounded-full border-4 border-green-300 text-black text-center w-full pr-10'
+                  className='handler-input-fields-creds-input-section-base-styles handler-1100-input-fields-creds-input-section-base-styles'
                   value={vaultCell.credential}
                   onChange={(e) => handleInputData(e)}
                   placeholder='Credential'
@@ -127,7 +133,7 @@ function Handler() {
                   <img
                     ref={credentialShowIconImgRef}
                     src={credentialShowIcon}
-                    className='w-8 h-8 cursor-pointer'
+                    className='handler-input-fields-creds-input-eye-img-section-base-styles handler-1100-input-fields-creds-input-eye-img-section-base-styles'
                     alt='Show Credential'
                   />
                 </span>
@@ -136,27 +142,33 @@ function Handler() {
 
             <button
               onClick={saveCredential}
-              className='flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300  '
+              className='handler-input-fields-add-creds-section-base-styles handler-1100-input-fields-add-creds-section-base-styles'
             >
-              {' '}
-              <lord-icon
-                src='https://cdn.lordicon.com/jgnvfzqg.json'
-                trigger='hover'
-                colors='primary:#ffffff'
-              ></lord-icon>{' '}
+              <div className='handler-input-fields-add-creds-icon-base-styles handler-1100-input-fields-add-creds-icon-base-styles'>
+                <lord-icon
+                  src='https://cdn.lordicon.com/jgnvfzqg.json'
+                  trigger='hover'
+                  colors='primary:#ffffff'
+                  style={{ width: '100%', height: '100%' }}
+                ></lord-icon>
+              </div>
               Add Credential
             </button>
           </div>
         </div>
-        <div className='passwords justify-center px-5'>
-          <h2 className='text-white font-bold text-2xl p-5 text-center'>
+        <div className=' handler-passwords-display-section-base-styles '>
+          <h2 className='handler-passwords-display-heading-base-styles '>
             Your Credentials
           </h2>
           {/* overflow:hidden is needed to be added if border radius is to be put on a table */}
           {credsList.length === 0 && (
-            <div className='text-white text-[14px] flex flex-col justify-center items-center'>
+            <div className='handler-passwords-display-empty-list-display-base-styles '>
               <span>
-                <img className='w-44 h-44 invert' src={emptyLockerImg} alt='' />
+                <img
+                  className='handler-passwords-display-empty-list-display-img-base-styles '
+                  src={emptyLockerImg}
+                  alt=''
+                />
               </span>
               <span className='text-lg py-2'> No Credentials Found</span>
             </div>

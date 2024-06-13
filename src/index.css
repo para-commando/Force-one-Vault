@@ -10,15 +10,106 @@
 }
 
 @layer components {
-
   .myContainer {
     @apply container px-36 py-12;
   }
+
+  .navbar-base-styles {
+    @apply bg-[#1a200e] text-white flex justify-between items-center py-5 h-20 px-9 text-xl sticky top-0 z-10
+  }
+
+  .navbar-logo-base-styles {
+    @apply font-bold flex items-center
+  }
+
+  .navbar-logo-img-base-styles {
+    @apply w-14 h-14 mx-2 mb-3
+  }
+
+  .navbar-links-base-styles {
+    @apply flex gap-14
+  }
+
+  .navbar-links-hover-effect {
+    @apply hover:font-bold
+  }
+
+  .handler-base-styles {
+    @apply bg-armyBackgroundColor h-full relative py-20
+  }
+
+  .handler-add-cred-section-base-styles {
+    @apply mx-auto max-w-4xl bg-gray-950 text-white px-28 pb-7
+  }
+
+  .handler-logo-section-base-styles {
+    @apply flex flex-col items-center justify-center gap-2
+  }
+
+  .handler-logo-title-section-base-styles {
+    @apply flex items-center text-2xl
+  }
+
+  .handler-logo-sub-title-section-base-styles {
+    @apply text-center mt-0 text-[12px]
+  }
+
+  .handler-logo-title-text-section-base-styles {
+    @apply pt-6 font-bold
+  }
+
+  .handler-logo-title-img-section-base-styles {
+    @apply w-16 h-16 mx-2
+  }
+
+  .handler-input-fields-section-base-styles {
+    @apply text-white flex flex-col py-4 gap-4 items-center
+  }
+
+  .handler-input-fields-source-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-full
+  }
+
+  .handler-input-fields-unique-creds-id-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-1/2
+  }
+
+  .handler-input-fields-creds-section-base-styles {
+    @apply flex items-center relative w-1/2
+  }
+
+  .handler-input-fields-creds-input-section-base-styles {
+    @apply rounded-full border-4 border-green-300 text-black text-center w-full pr-10
+  }
+
+  .handler-input-fields-creds-input-eye-img-section-base-styles {
+    @apply w-8 h-8 cursor-pointer
+  }
+
+  .handler-input-fields-add-creds-section-base-styles {
+    @apply flex justify-center items-center bg-green-900 rounded-full px-4 py-2 w-fit gap-2 hover:bg-green-950 hover:font-bold border-green-300
+  }
+
+  .handler-passwords-display-section-base-styles {
+    @apply justify-center px-5
+  }
+
+  .handler-passwords-display-heading-base-styles {
+    @apply text-white font-bold text-2xl p-5 text-center
+  }
+  .handler-passwords-display-empty-list-display-base-styles{
+    @apply text-white text-[14px] flex flex-col justify-center items-center
+  }
+
+  .handler-passwords-display-empty-list-display-img-base-styles{
+    @apply  w-44 h-44 invert
+  }
+
 }
 
 @media (max-width: 1100px) {
   .responsive-styles-1100-font-text {
-    @apply text-[20px];
+    @apply text-[18px];
 
   }
 
@@ -31,6 +122,39 @@
     @apply w-14 h-14 mx-2 mb-3;
 
   }
+
+  .responsive-styles-1100-navbar-gen {
+    @apply h-16;
+
+  }
+
+  .handler-1100-base-styles {
+    @apply bg-armyBackgroundColor h-full relative py-16
+  }
+
+  .handler-1100-add-cred-section-styles {
+    @apply mx-auto max-w-3xl bg-gray-950 text-white px-20 pb-7
+  }
+
+  .handler-1100-logo-section-styles {
+    @apply flex flex-col items-center justify-center gap-1
+  }
+
+  .handler-1100-logo-title-section-styles {
+    @apply flex items-center text-xl
+  }
+
+  .handler-1100-logo-title-text-section-styles {}
+
+  .handler-1100-logo-title-img-section-styles {
+    @apply w-14 h-14 mx-2
+  }
+
+  .handler-1100-logo-sub-title-section-styles {
+    @apply text-[10px]
+  }
+
+
 }
 
 @media (max-width: 650px) {
@@ -111,6 +235,5 @@
     @apply hidden;
 
   }
-
 
 }

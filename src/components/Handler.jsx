@@ -79,17 +79,24 @@ function Handler() {
   return (
     <>
       <div className='handler-base-styles handler-1100-base-styles'>
-        <div className='handler-add-cred-section-base-styles handler-1100-add-cred-section-styles'>
+        <div className='handler-add-cred-section-base-styles handler-1100-add-cred-section-styles
+        handler-500-add-cred-section-styles
+        handler-400-add-cred-section-styles'>
           <div className='handler-logo-section-base-styles handler-1100-logo-section-styles'>
             <div className='handler-logo-title-section-base-styles handler-1100-logo-title-section-styles'>
-              <span className='handler-logo-title-text-section-base-styles handler-1100-logo-title-text-section-styles'>
+              <span
+                className='handler-logo-title-text-section-base-styles handler-1100-logo-title-text-section-styles
+                handler-500-logo-title-text-section-styles'
+              >
                 Force-One-Vault
               </span>
               <span>
                 <img
                   src={tankLogo}
                   alt=''
-                  className='handler-logo-title-img-section-base-styles handler-1100-logo-title-img-section-styles'
+                  className='handler-logo-title-img-section-base-styles handler-1100-logo-title-img-section-styles
+                  handler-650-logo-title-img-section-styles
+                  handler-500-logo-title-img-section-styles'
                 />
               </span>
             </div>
@@ -100,7 +107,8 @@ function Handler() {
 
           <div className='handler-input-fields-section-base-styles handler-1100-input-fields-section-base-styles'>
             <input
-              className='handler-input-fields-source-section-base-styles handler-1100-input-fields-source-section-base-styles'
+              className='handler-input-fields-source-section-base-styles handler-1100-input-fields-source-section-base-styles
+              handler-650-input-fields-source-section-base-styles'
               value={vaultCell.source}
               onChange={(e) => handleInputData(e)}
               placeholder='Enter Source URL/Info'
@@ -108,9 +116,14 @@ function Handler() {
               name='source'
               id=''
             />
-            <div className='flex gap-3 w-full'>
+            <div className='flex gap-3 w-full 
+            handler-400-input-fields-unique-creds-and-creds-section-base-styles
+            handler-320-input-fields-unique-creds-and-creds-section-base-styles'>
               <input
-                className='handler-input-fields-unique-creds-id-section-base-styles handler-1100-input-fields-unique-creds-id-section-base-styles'
+                className='handler-input-fields-unique-creds-id-section-base-styles handler-1100-input-fields-unique-creds-id-section-base-styles
+                handler-650-input-fields-unique-creds-id-section-base-styles
+                handler-400-input-fields-unique-creds-id-section-base-styles
+                handler-320-input-fields-unique-creds-id-section-base-styles'
                 value={vaultCell.uniqueCredId}
                 onChange={(e) => handleInputData(e)}
                 placeholder='Unique Credential-id'
@@ -118,10 +131,15 @@ function Handler() {
                 name='uniqueCredId'
                 id=''
               />
-              <div className='handler-input-fields-creds-section-base-styles handler-1100-input-fields-creds-section-base-styles '>
+              <div
+                className='handler-input-fields-creds-section-base-styles handler-1100-input-fields-creds-section-base-styles 
+              handler-650-input-fields-creds-section-base-styles
+              handler-400-input-fields-creds-section-base-styles
+              handler-320-input-fields-creds-section-base-styles'
+              >
                 <input
                   ref={credentialRef}
-                  className='handler-input-fields-creds-input-section-base-styles handler-1100-input-fields-creds-input-section-base-styles'
+                  className='handler-input-fields-creds-input-section-base-styles handler-650-input-fields-creds-input-section-base-styles'
                   value={vaultCell.credential}
                   onChange={(e) => handleInputData(e)}
                   placeholder='Credential'
@@ -133,7 +151,9 @@ function Handler() {
                   <img
                     ref={credentialShowIconImgRef}
                     src={credentialShowIcon}
-                    className='handler-input-fields-creds-input-eye-img-section-base-styles handler-1100-input-fields-creds-input-eye-img-section-base-styles'
+                    className='handler-input-fields-creds-input-eye-img-section-base-styles handler-1100-input-fields-creds-input-eye-img-section-base-styles
+                    handler-650-input-fields-creds-input-eye-img-section-base-styles
+                    handler-500-input-fields-creds-input-eye-img-section-base-styles'
                     alt='Show Credential'
                   />
                 </span>
@@ -142,9 +162,9 @@ function Handler() {
 
             <button
               onClick={saveCredential}
-              className='handler-input-fields-add-creds-section-base-styles handler-1100-input-fields-add-creds-section-base-styles'
+              className='handler-input-fields-add-creds-section-base-styles handler-1100-input-fields-add-creds-section-base-styles handler-650-input-fields-add-creds-section-base-styles'
             >
-              <div className='handler-input-fields-add-creds-icon-base-styles handler-1100-input-fields-add-creds-icon-base-styles'>
+              <div className='handler-input-fields-add-creds-icon-base-styles handler-1100-input-fields-add-creds-icon-base-styles handler-650-input-fields-add-creds-icon-base-styles'>
                 <lord-icon
                   src='https://cdn.lordicon.com/jgnvfzqg.json'
                   trigger='hover'
@@ -157,7 +177,8 @@ function Handler() {
           </div>
         </div>
         <div className=' handler-passwords-display-section-base-styles '>
-          <h2 className='handler-passwords-display-heading-base-styles '>
+          <h2 className='handler-passwords-display-heading-base-styles
+          handler-1100-passwords-display-heading-base-styles '>
             Your Credentials
           </h2>
           {/* overflow:hidden is needed to be added if border radius is to be put on a table */}
@@ -165,7 +186,7 @@ function Handler() {
             <div className='handler-passwords-display-empty-list-display-base-styles '>
               <span>
                 <img
-                  className='handler-passwords-display-empty-list-display-img-base-styles '
+                  className='handler-passwords-display-empty-list-display-img-base-styles handler-1100-passwords-display-empty-list-display-img-base-styles'
                   src={emptyLockerImg}
                   alt=''
                 />

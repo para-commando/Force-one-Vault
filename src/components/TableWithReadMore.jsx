@@ -475,12 +475,12 @@ const TableWithReadMore = () => {
                   </td>
                   <td className='table-with-read-more-delete-cell-base-styles'>
                     <button
-                      className=' hover:underline mt-2'
+                      className=' hover:underline mt-2 w-full'
                       onClick={() =>
                         dispatch(deleteCred({ mainId: ele.mainId }))
                       }
                     >
-                      <span title='Delete Credential' className=' '>
+                      <span title='Delete Credential' className='w-full'>
                         <lord-icon
                           src='https://cdn.lordicon.com/zxvuvcnc.json'
                           trigger='hover'

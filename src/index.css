@@ -111,7 +111,7 @@
   }
 
   .table-with-read-more-source-cell-base-styles {
-    @apply border-2 py-2 px-2 border-black text-center w-[128px]
+    @apply border-2 py-2 px-2 border-black text-center min-w-[200px] max-w-[250px]
   }
 
   .table-with-read-more-source-edit-cell-base-styles {
@@ -131,7 +131,7 @@
   }
 
   .table-with-read-more-unique-cred-id-cell-base-styles {
-    @apply border-2 py-2 border-black text-center w-[128px]
+    @apply border-2 py-2 border-black text-center  min-w-[200px] max-w-[250px]
   }
 
   .table-with-read-more-unique-cred-id-edit-cell-base-styles {
@@ -147,11 +147,11 @@
   }
 
   .table-with-read-more-unique-cred-id-content-base-styles {
-    @apply pb-1 text-wrap break-words w-3/4
+    @apply pb-1 text-wrap break-words w-full
   }
 
   .table-with-read-more-cred-cell-base-styles {
-    @apply border-2 py-2 border-black text-center w-[128px]
+    @apply border-2 py-2 border-black text-center min-w-[200px] max-w-[250px]
   }
 
   .table-with-read-more-cred-edit-cell-base-styles {
@@ -189,6 +189,15 @@
   .table-with-read-more-toggle-col-icon-base-styles {
     @apply w-8 h-8
   }
+
+  .table-with-read-more-cred-buttons-base-styles {
+    @apply invert cursor-pointer flex gap-1 items-center px-2
+  }
+
+  .table-with-read-more-content-buttons-base-styles{
+    @apply flex gap-1
+
+}
 
 }
 
@@ -302,6 +311,14 @@
   .table-1100-with-read-more-cancel-button-base-styles {
     @apply w-6 h-6 ml-2
   }
+
+  .table-1100-with-read-more-cred-buttons-base-styles {
+    @apply flex-col gap-1 items-center px-1 justify-center
+  }
+
+  .table-1100-with-read-more-content-buttons-base-styles{
+    @apply flex-col
+  }
 }
 
 @media (max-width: 650px) {
@@ -366,6 +383,8 @@
   .table-650-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
+
+
 }
 
 

@@ -299,40 +299,47 @@ const TableWithReadMore = () => {
                           <span className='table-with-read-more-source-content-base-styles'>
                             {renderCellContent(ele.source, isExpanded)}
                           </span>
-                          <span className='invert cursor-pointer'>
-                            <span
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
                                 copyToClipBoard(ele.source);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingRight: '6px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellOne(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
-                          </span>
+                            </div>
+                          </div>
                         </>
                       )}
                     </div>
@@ -407,40 +414,47 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                           <span className='table-with-read-more-unique-cred-id-content-base-styles'>
                             {renderCellContent(ele.uniqueCredId, isExpanded)}
                           </span>
-                          <span className='invert cursor-pointer'>
-                            <span
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >                            
+                          <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
                                 copyToClipBoard(ele.uniqueCredId);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingRight: '6px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellTwo(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
-                          </span>
+                            </div>
+                          </div>
                         </>
                       )}
                     </div>
@@ -520,12 +534,17 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                                 )
                               : renderCellContent(ele.credential, isExpanded)}
                           </span>
-                          <div className='invert cursor-pointer flex gap-1 items-center px-2'>
-                            <span
-                              onClick={(e) => {
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >   
+                          <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert mr-3'
+                              onClick={() => {
                                 togglePasswordVisibilityFunc(ele);
                               }}
-                              className='mr-3'
                             >
                               <img
                                 ref={hidePasswordIconRef}
@@ -533,38 +552,43 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                                 className='table-with-read-more-cred-content-eye-img-styles'
                                 alt='Toggle Credential'
                               />
-                            </span>
-                            <span
+                            </div>                         
+                          <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
-                                copyToClipBoard(ele.credential);
+                                copyToClipBoard(ele.uniqueCredId);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellThree(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
+                            </div>
                           </div>
                         </>
                       )}

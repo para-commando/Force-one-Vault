@@ -234,7 +234,7 @@ const TableWithReadMore = () => {
                   <td className='table-with-read-more-source-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellOneID] ? (
-                        <>
+                         <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellOne || ''}
@@ -293,7 +293,7 @@ const TableWithReadMore = () => {
                               />
                             </div>
                           </div>
-                        </>
+                         </div>
                       ) : (
                         <>
                           <span className='table-with-read-more-source-content-base-styles'>
@@ -340,7 +340,7 @@ const TableWithReadMore = () => {
                   <td className='table-with-read-more-unique-cred-id-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellTwoID] ? (
-                        <>
+                       <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellTwo || ''}
@@ -402,7 +402,7 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                             </div>
                           </div>
                           
-                        </>
+                        </div>
                       ) : (
                         <>
                           <span className='table-with-read-more-unique-cred-id-content-base-styles'>
@@ -449,7 +449,7 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                   <td className='table-with-read-more-cred-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellThreeID] ? (
-                        <>
+                        <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellThree || ''}
@@ -510,7 +510,7 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                               />
                             </div>
                           </div>
-                         </>
+                        </div>
                       ) : (
                         <>
                           <span className='table-with-read-more-cred-content-base-styles '>

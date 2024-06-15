@@ -11,6 +11,8 @@ import {
 } from '../features/credsList/credsListSlice';
 import hidePasswordIcon from '../assets/hidePassword.png';
 import showPasswordIcon from '../assets/showPasswordIcon.png';
+import saveIcon from '../assets/save.png';
+import cancelIcon from '../assets/cancel.png';
 
 const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
@@ -171,7 +173,7 @@ const TableWithReadMore = () => {
       {/* Same as */}
       <ToastContainer />
       {credsList.length > 0 && (
-        <table className='table-auto text-white w-full rounded-xl overflow-x-scroll'>
+        <table className='table-auto text-white w-full overflow-x-scroll'>
           <thead
             className='table-with-read-more-header-base-styles table-1100-with-read-more-header-base-styles
             table-650-with-read-more-header-base-styles
@@ -245,28 +247,46 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-source-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellOne({
-                                  mainId: ele.mainId,
-                                  source: inputValues[ele.mainId]?.cellOne,
-                                })
-                              );
-                              saveEditCellOne(ele);
-                            }}
-                            className='table-with-read-more-source-save-button-base-styles'
-                          >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellOne(ele);
-                            }}
-                            className='table-with-read-more-source-cancel-button-base-styles'
-                          >
-                            Cancel
-                          </button>
+                          <div className='flex'>
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellOne({
+                                    mainId: ele.mainId,
+                                    source: inputValues[ele.mainId]?.cellOne,
+                                  })
+                                );
+                                saveEditCellOne(ele);
+                              }}
+                              className='table-with-read-more-source-save-button-base-styles table-1100-with-read-more-source-save-button-base-styles
+                            table-650-with-read-more-source-save-button-base-styles
+                            table-500-with-read-more-source-save-button-base-styles
+                            table-400-with-read-more-source-save-button-base-styles
+                            table-320-with-read-more-source-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellOne(ele);
+                              }}
+                              className='table-with-read-more-source-cancel-button-base-styles table-1100-with-read-more-source-cancel-button-base-styles
+                            table-650-with-read-more-source-cancel-button-base-styles
+                            table-500-with-read-more-source-cancel-button-base-styles
+                            table-400-with-read-more-source-cancel-button-base-styles
+                            table-320-with-read-more-source-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
                         </>
                       ) : (
                         <>

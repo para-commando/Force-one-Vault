@@ -99,7 +99,7 @@
   }
 
   .handler-passwords-display-empty-list-display-base-styles {
-    @apply text-white text-[14px] flex flex-col justify-center items-center  
+    @apply text-white text-[14px] flex flex-col justify-center items-center
   }
 
   .handler-passwords-display-empty-list-display-img-base-styles {
@@ -119,11 +119,11 @@
   }
 
   .table-with-read-more-source-save-button-base-styles {
-    @apply mx-1 bg-green-500 text-white px-2 rounded-full text-[14px]
+    @apply flex justify-center w-6 h-6 ml-3
   }
 
   .table-with-read-more-source-cancel-button-base-styles {
-    @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
+    @apply flex justify-center w-6 h-6 ml-3
   }
 
   .table-with-read-more-source-content-base-styles {
@@ -151,7 +151,7 @@
   }
 
   .table-with-read-more-cred-cell-base-styles {
-    @apply border-2 py-2 border-black text-center w-[128px] 
+    @apply border-2 py-2 border-black text-center w-[128px]
   }
 
   .table-with-read-more-cred-edit-cell-base-styles {
@@ -181,10 +181,12 @@
   .handler-input-fields-add-creds-icon-base-styles {
     @apply w-8 h-8
   }
-  .table-with-read-more-header-base-styles{
+
+  .table-with-read-more-header-base-styles {
     @apply border-white bg-green-300 text-black
   }
-  .table-with-read-more-toggle-col-icon-base-styles{
+
+  .table-with-read-more-toggle-col-icon-base-styles {
     @apply w-8 h-8
   }
 
@@ -285,11 +287,20 @@
     @apply w-40 h-40 invert
   }
 
-  .table-1100-with-read-more-header-base-styles{
+  .table-1100-with-read-more-header-base-styles {
     @apply text-[13px]
   }
-  .table-1100-with-read-more-toggle-col-icon-base-styles{
+
+  .table-1100-with-read-more-toggle-col-icon-base-styles {
     @apply w-7 h-7
+  }
+
+  .table-1100-with-read-more-source-save-button-base-styles {
+    @apply w-6 h-6 ml-2
+  }
+
+  .table-1100-with-read-more-source-cancel-button-base-styles {
+    @apply w-6 h-6 ml-2
   }
 }
 
@@ -340,12 +351,20 @@
 
   .handler-650-input-fields-creds-input-eye-img-section-base-styles {}
 
-  .table-650-with-read-more-header-base-styles{
+  .table-650-with-read-more-header-base-styles {
     @apply text-[10px]
   }
 
-  .table-650-with-read-more-toggle-col-icon-base-styles{
+  .table-650-with-read-more-toggle-col-icon-base-styles {
     @apply w-6 h-6
+  }
+
+  .table-650-with-read-more-source-save-button-base-styles {
+    @apply w-5 h-5 ml-2
+  }
+
+  .table-650-with-read-more-source-cancel-button-base-styles {
+    @apply w-5 h-5 ml-2
   }
 }
 
@@ -387,11 +406,21 @@
   .handler-500-logo-title-img-section-styles {
     @apply w-[40px] h-[40px] mx-2
   }
-  .table-500-with-read-more-header-base-styles{
+
+  .table-500-with-read-more-header-base-styles {
     @apply text-[9px]
   }
-  .table-500-with-read-more-toggle-col-icon-base-styles{
-    @apply w-5 h-5 invert
+
+  .table-500-with-read-more-toggle-col-icon-base-styles {
+    @apply w-6 h-6
+  }
+
+  .table-500-with-read-more-source-save-button-base-styles {
+    @apply w-5 h-5 ml-2
+  }
+
+  .table-500-with-read-more-source-cancel-button-base-styles {
+    @apply w-5 h-5 ml-2
   }
 }
 
@@ -431,11 +460,21 @@
   .handler-400-input-fields-creds-section-base-styles {
     @apply w-full
   }
-  .table-400-with-read-more-header-base-styles{
+
+  .table-400-with-read-more-header-base-styles {
     @apply text-[8px]
   }
-  .table-400-with-read-more-toggle-col-icon-base-styles{
-    @apply w-4 h-4
+
+  .table-400-with-read-more-toggle-col-icon-base-styles {
+    @apply w-6 h-6
+  }
+
+  .table-400-with-read-more-source-save-button-base-styles {
+    @apply w-4 h-4 ml-2
+  }
+
+  .table-400-with-read-more-source-cancel-button-base-styles {
+    @apply w-5 h-5 ml-2
   }
 }
 
@@ -462,8 +501,16 @@
     @apply w-full
   }
 
-  .table-320-with-read-more-header-base-styles{
+  .table-320-with-read-more-header-base-styles {
     @apply text-[7px]
+  }
+
+  .table-320-with-read-more-source-save-button-base-styles {
+    @apply w-5 h-5 ml-2
+  }
+
+  .table-320-with-read-more-source-cancel-button-base-styles {
+    @apply w-5 h-5 ml-2
   }
 
 }

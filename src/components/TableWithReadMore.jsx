@@ -172,11 +172,18 @@ const TableWithReadMore = () => {
       <ToastContainer />
       {credsList.length > 0 && (
         <table className='table-auto text-white w-full rounded-xl overflow-x-scroll'>
-          <thead className='border-white bg-green-300 text-black'>
+          <thead
+            className='table-with-read-more-header-base-styles table-1100-with-read-more-header-base-styles
+            table-650-with-read-more-header-base-styles
+            table-500-with-read-more-header-base-styles
+            table-400-with-read-more-header-base-styles
+            table-320-with-read-more-header-base-styles
+           '
+          >
             <tr className='border-white'>
               <th className='border-white'>Toggle View</th>
               <th className='border-white'>Source</th>
-              <th className='border-white'>Unique Credential ID</th>
+              <th className='border-white'>Unique Cred-ID</th>
               <th className='border-white'>Credential</th>
               <th className='border-white'>Delete</th>
             </tr>
@@ -192,18 +199,32 @@ const TableWithReadMore = () => {
                       onClick={() => toggleRow(ele.mainId)}
                     >
                       {isExpanded ? (
-                        <span title='Read Less' className='invert'>
-                          <lord-icon
-                            src='https://cdn.lordicon.com/xaubpxfc.json'
-                            trigger='hover'
-                          ></lord-icon>
+                        <span title='Read Less' className=''>
+                          <div
+                            className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
+                          >
+                            <lord-icon
+                              src='https://cdn.lordicon.com/xaubpxfc.json'
+                              trigger='hover'
+                              style={{ width: '100%', height: '100%' }}
+                            ></lord-icon>
+                          </div>
                         </span>
                       ) : (
-                        <span title='Read More' className='invert'>
-                          <lord-icon
-                            src='https://cdn.lordicon.com/ygnmvgzy.json'
-                            trigger='hover'
-                          ></lord-icon>
+                        <span title='Read More' className='  '>
+                          <div
+                            className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert'
+                          >
+                            <lord-icon
+                              src='https://cdn.lordicon.com/ygnmvgzy.json'
+                              style={{ width: '100%', height: '100%' }}
+                              trigger='hover'
+                            ></lord-icon>
+                          </div>
                         </span>
                       )}
                     </button>

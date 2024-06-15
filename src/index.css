@@ -99,7 +99,7 @@
   }
 
   .handler-passwords-display-empty-list-display-base-styles {
-    @apply text-white text-[14px] flex justify-center items-center  
+    @apply text-white text-[14px] flex flex-col justify-center items-center  
   }
 
   .handler-passwords-display-empty-list-display-img-base-styles {
@@ -107,11 +107,11 @@
   }
 
   .table-with-read-more-toggle-col-cell-base-styles {
-    @apply border-2 py-2 border-black text-center w-12 px-8
+    @apply border-2 py-2 border-black text-center w-12 px-5
   }
 
   .table-with-read-more-source-cell-base-styles {
-    @apply border-2 py-2 px-2 border-black text-center max-w-32
+    @apply border-2 py-2 px-2 border-black text-center w-[128px]
   }
 
   .table-with-read-more-source-edit-cell-base-styles {
@@ -131,7 +131,7 @@
   }
 
   .table-with-read-more-unique-cred-id-cell-base-styles {
-    @apply border-2 py-2 border-black text-center max-w-32
+    @apply border-2 py-2 border-black text-center w-[128px]
   }
 
   .table-with-read-more-unique-cred-id-edit-cell-base-styles {
@@ -151,7 +151,7 @@
   }
 
   .table-with-read-more-cred-cell-base-styles {
-    @apply border-2 py-2 border-black text-center max-w-32
+    @apply border-2 py-2 border-black text-center w-[128px] 
   }
 
   .table-with-read-more-cred-edit-cell-base-styles {
@@ -179,6 +179,12 @@
   }
 
   .handler-input-fields-add-creds-icon-base-styles {
+    @apply w-8 h-8
+  }
+  .table-with-read-more-header-base-styles{
+    @apply border-white bg-green-300 text-black
+  }
+  .table-with-read-more-toggle-col-icon-base-styles{
     @apply w-8 h-8
   }
 
@@ -278,6 +284,13 @@
   .handler-1100-passwords-display-empty-list-display-img-base-styles {
     @apply w-40 h-40 invert
   }
+
+  .table-1100-with-read-more-header-base-styles{
+    @apply text-[13px]
+  }
+  .table-1100-with-read-more-toggle-col-icon-base-styles{
+    @apply w-7 h-7
+  }
 }
 
 @media (max-width: 650px) {
@@ -326,6 +339,14 @@
   }
 
   .handler-650-input-fields-creds-input-eye-img-section-base-styles {}
+
+  .table-650-with-read-more-header-base-styles{
+    @apply text-[10px]
+  }
+
+  .table-650-with-read-more-toggle-col-icon-base-styles{
+    @apply w-6 h-6
+  }
 }
 
 
@@ -366,7 +387,12 @@
   .handler-500-logo-title-img-section-styles {
     @apply w-[40px] h-[40px] mx-2
   }
-
+  .table-500-with-read-more-header-base-styles{
+    @apply text-[9px]
+  }
+  .table-500-with-read-more-toggle-col-icon-base-styles{
+    @apply w-5 h-5 invert
+  }
 }
 
 @media (max-width: 400px) {
@@ -405,6 +431,12 @@
   .handler-400-input-fields-creds-section-base-styles {
     @apply w-full
   }
+  .table-400-with-read-more-header-base-styles{
+    @apply text-[8px]
+  }
+  .table-400-with-read-more-toggle-col-icon-base-styles{
+    @apply w-4 h-4
+  }
 }
 
 @media (max-width: 320px) {
@@ -430,6 +462,8 @@
     @apply w-full
   }
 
-
+  .table-320-with-read-more-header-base-styles{
+    @apply text-[7px]
+  }
 
 }

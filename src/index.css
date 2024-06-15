@@ -118,11 +118,11 @@
     @apply text-black w-3/4 mx-2 px-2
   }
 
-  .table-with-read-more-source-save-button-base-styles {
+  .table-with-read-more-save-button-base-styles {
     @apply flex justify-center w-6 h-6 ml-3
   }
 
-  .table-with-read-more-source-cancel-button-base-styles {
+  .table-with-read-more-cancel-button-base-styles {
     @apply flex justify-center w-6 h-6 ml-3
   }
 
@@ -295,11 +295,11 @@
     @apply w-7 h-7
   }
 
-  .table-1100-with-read-more-source-save-button-base-styles {
+  .table-1100-with-read-more-save-button-base-styles {
     @apply w-6 h-6 ml-2
   }
 
-  .table-1100-with-read-more-source-cancel-button-base-styles {
+  .table-1100-with-read-more-cancel-button-base-styles {
     @apply w-6 h-6 ml-2
   }
 }
@@ -359,11 +359,11 @@
     @apply w-6 h-6
   }
 
-  .table-650-with-read-more-source-save-button-base-styles {
+  .table-650-with-read-more-save-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 
-  .table-650-with-read-more-source-cancel-button-base-styles {
+  .table-650-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 }
@@ -415,11 +415,11 @@
     @apply w-6 h-6
   }
 
-  .table-500-with-read-more-source-save-button-base-styles {
+  .table-500-with-read-more-save-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 
-  .table-500-with-read-more-source-cancel-button-base-styles {
+  .table-500-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 }
@@ -469,11 +469,11 @@
     @apply w-6 h-6
   }
 
-  .table-400-with-read-more-source-save-button-base-styles {
+  .table-400-with-read-more-save-button-base-styles {
     @apply w-4 h-4 ml-2
   }
 
-  .table-400-with-read-more-source-cancel-button-base-styles {
+  .table-400-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 }
@@ -505,11 +505,11 @@
     @apply text-[7px]
   }
 
-  .table-320-with-read-more-source-save-button-base-styles {
+  .table-320-with-read-more-save-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 
-  .table-320-with-read-more-source-cancel-button-base-styles {
+  .table-320-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
 

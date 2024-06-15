@@ -247,7 +247,13 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-source-edit-cell-base-styles'
                           />
-                          <div className='flex'>
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+                          table-650-with-read-more-source-edit-cell-buttons-styles
+                          table-500-with-read-more-source-edit-cell-buttons-styles
+                          table-400-with-read-more-source-edit-cell-buttons-styles
+                          table-320-with-read-more-source-edit-cell-buttons-styles'
+                          >
                             <div
                               onClick={(e) => {
                                 dispatch(
@@ -258,11 +264,11 @@ const TableWithReadMore = () => {
                                 );
                                 saveEditCellOne(ele);
                               }}
-                              className='table-with-read-more-source-save-button-base-styles table-1100-with-read-more-source-save-button-base-styles
-                            table-650-with-read-more-source-save-button-base-styles
-                            table-500-with-read-more-source-save-button-base-styles
-                            table-400-with-read-more-source-save-button-base-styles
-                            table-320-with-read-more-source-save-button-base-styles '
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+                            table-650-with-read-more-save-button-base-styles
+                            table-500-with-read-more-save-button-base-styles
+                            table-400-with-read-more-save-button-base-styles
+                            table-320-with-read-more-save-button-base-styles '
                             >
                               <img
                                 src={saveIcon}
@@ -274,11 +280,11 @@ const TableWithReadMore = () => {
                               onClick={(e) => {
                                 cancelEditCellOne(ele);
                               }}
-                              className='table-with-read-more-source-cancel-button-base-styles table-1100-with-read-more-source-cancel-button-base-styles
-                            table-650-with-read-more-source-cancel-button-base-styles
-                            table-500-with-read-more-source-cancel-button-base-styles
-                            table-400-with-read-more-source-cancel-button-base-styles
-                            table-320-with-read-more-source-cancel-button-base-styles'
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+                            table-650-with-read-more-cancel-button-base-styles
+                            table-500-with-read-more-cancel-button-base-styles
+                            table-400-with-read-more-cancel-button-base-styles
+                            table-320-with-read-more-cancel-button-base-styles'
                             >
                               <img
                                 src={cancelIcon}
@@ -347,29 +353,55 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-unique-cred-id-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellTwo({
-                                  mainId: ele.mainId,
-                                  uniqueCredId:
-                                    inputValues[ele.mainId]?.cellTwo,
-                                })
-                              );
-                              saveEditCellTwo(ele);
-                            }}
-                            className='table-with-read-more-unique-cred-id-save-button-base-styles '
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+table-650-with-read-more-source-edit-cell-buttons-styles
+table-500-with-read-more-source-edit-cell-buttons-styles
+table-400-with-read-more-source-edit-cell-buttons-styles
+table-320-with-read-more-source-edit-cell-buttons-styles'
                           >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellTwo(ele);
-                            }}
-                            className='table-with-read-more-unique-cred-id-cancel-button-base-styles'
-                          >
-                            Cancel
-                          </button>
+                            {' '}
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellTwo({
+                                    mainId: ele.mainId,
+                                    uniqueCredId:
+                                      inputValues[ele.mainId]?.cellTwo,
+                                  })
+                                );
+                                saveEditCellTwo(ele);
+                              }}
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+    table-650-with-read-more-save-button-base-styles
+    table-500-with-read-more-save-button-base-styles
+    table-400-with-read-more-save-button-base-styles
+    table-320-with-read-more-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellTwo(ele);
+                              }}
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+    table-650-with-read-more-cancel-button-base-styles
+    table-500-with-read-more-cancel-button-base-styles
+    table-400-with-read-more-cancel-button-base-styles
+    table-320-with-read-more-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
+                          
                         </>
                       ) : (
                         <>
@@ -430,30 +462,55 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-cred-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellThree({
-                                  mainId: ele.mainId,
-                                  credential:
-                                    inputValues[ele.mainId]?.cellThree,
-                                })
-                              );
-                              saveEditCellThree(ele);
-                            }}
-                            className='table-with-read-more-cred-save-button-base-styles'
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+table-650-with-read-more-source-edit-cell-buttons-styles
+table-500-with-read-more-source-edit-cell-buttons-styles
+table-400-with-read-more-source-edit-cell-buttons-styles
+table-320-with-read-more-source-edit-cell-buttons-styles'
                           >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellThree(ele);
-                            }}
-                            className='table-with-read-more-cred-cancel-button-base-styles '
-                          >
-                            Cancel
-                          </button>
-                        </>
+                            {' '}
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellThree({
+                                    mainId: ele.mainId,
+                                    credential:
+                                      inputValues[ele.mainId]?.cellThree,
+                                  })
+                                );
+                                saveEditCellThree(ele);
+                              }}
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+    table-650-with-read-more-save-button-base-styles
+    table-500-with-read-more-save-button-base-styles
+    table-400-with-read-more-save-button-base-styles
+    table-320-with-read-more-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellThree(ele);
+                              }}
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+    table-650-with-read-more-cancel-button-base-styles
+    table-500-with-read-more-cancel-button-base-styles
+    table-400-with-read-more-cancel-button-base-styles
+    table-320-with-read-more-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
+                         </>
                       ) : (
                         <>
                           <span className='table-with-read-more-cred-content-base-styles '>

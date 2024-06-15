@@ -115,7 +115,7 @@
   }
 
   .table-with-read-more-source-edit-cell-base-styles {
-    @apply text-black w-3/4 mx-2 px-2
+    @apply text-black w-full mx-2 px-2
   }
 
   .table-with-read-more-save-button-base-styles {
@@ -135,7 +135,7 @@
   }
 
   .table-with-read-more-unique-cred-id-edit-cell-base-styles {
-    @apply text-black w-3/4 mx-2 px-2
+    @apply text-black w-full mx-2 px-2
   }
 
   .table-with-read-more-unique-cred-id-save-button-base-styles {
@@ -155,7 +155,7 @@
   }
 
   .table-with-read-more-cred-edit-cell-base-styles {
-    @apply text-black w-3/4 mx-2 px-2
+    @apply text-black w-full mx-2 px-2
   }
 
   .table-with-read-more-cred-save-button-base-styles {

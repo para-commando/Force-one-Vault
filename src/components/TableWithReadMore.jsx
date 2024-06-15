@@ -45,7 +45,7 @@ const TableWithReadMore = () => {
   };
 
   const renderCellContent = (content, isExpanded) => {
-    const maxLength = 20;
+    const maxLength = 18;
     if (isExpanded || content.length <= maxLength) {
       return content;
     }
@@ -194,7 +194,7 @@ const TableWithReadMore = () => {
             {credsList.map((ele) => {
               const isExpanded = !!expandedRows[ele.mainId];
               return (
-                <tr key={ele.mainId} className='border-white text-center'>
+                <tr key={ele.mainId} className='border-white text-center h-10'>
                   <td className='table-with-read-more-toggle-col-cell-base-styles'>
                     <button
                       className='text-blue-500 hover:underline mt-2'
@@ -296,7 +296,11 @@ const TableWithReadMore = () => {
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-source-content-base-styles'>
+                          <span className='table-with-read-more-source-content-base-styles table-1100-with-read-more-source-content-base-styles
+                          table-650-with-read-more-source-content-base-styles
+                          table-500-with-read-more-source-content-base-styles
+                          table-400-with-read-more-source-content-base-styles
+                          table-320-with-read-more-source-content-base-styles '>
                             {renderCellContent(ele.source, isExpanded)}
                           </span>
                           <div
@@ -411,14 +415,14 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-unique-cred-id-content-base-styles'>
+                          <span className='table-with-read-more-unique-cred-id-content-base-styles   '>
                             {renderCellContent(ele.uniqueCredId, isExpanded)}
                           </span>
                           <div
                             className='cursor-pointer 
                           table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
-                          >                            
-                          <div
+                          >
+                            <div
                               className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
                           table-400-with-read-more-toggle-col-icon-base-styles 
                           table-320-with-read-more-toggle-col-icon-base-styles  invert '
@@ -537,11 +541,11 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                           <div
                             className='cursor-pointer 
                           table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
-                          >   
-                          <div
+                          >
+                            <div
                               className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
                           table-400-with-read-more-toggle-col-icon-base-styles 
-                          table-320-with-read-more-toggle-col-icon-base-styles  invert mr-3'
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert  '
                               onClick={() => {
                                 togglePasswordVisibilityFunc(ele);
                               }}
@@ -552,8 +556,8 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                                 className='table-with-read-more-cred-content-eye-img-styles'
                                 alt='Toggle Credential'
                               />
-                            </div>                         
-                          <div
+                            </div>
+                            <div
                               className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
                           table-400-with-read-more-toggle-col-icon-base-styles 
                           table-320-with-read-more-toggle-col-icon-base-styles  invert '

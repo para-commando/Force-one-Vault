@@ -147,7 +147,7 @@
   }
 
   .table-with-read-more-unique-cred-id-content-base-styles {
-    @apply pb-1 text-wrap break-words w-full
+    @apply pb-1 text-wrap break-words w-3/4
   }
 
   .table-with-read-more-cred-cell-base-styles {
@@ -195,7 +195,7 @@
   }
 
   .table-with-read-more-content-buttons-base-styles{
-    @apply flex gap-1
+    @apply flex gap-1 p-1 justify-center items-center
 
 }
 
@@ -301,7 +301,7 @@
   }
 
   .table-1100-with-read-more-toggle-col-icon-base-styles {
-    @apply w-7 h-7
+    @apply w-6 h-6
   }
 
   .table-1100-with-read-more-save-button-base-styles {
@@ -318,6 +318,10 @@
 
   .table-1100-with-read-more-content-buttons-base-styles{
     @apply flex-col
+  }
+
+  .table-1100-with-read-more-source-content-base-styles {
+    @apply text-[14px]
   }
 }
 
@@ -373,7 +377,7 @@
   }
 
   .table-650-with-read-more-toggle-col-icon-base-styles {
-    @apply w-6 h-6
+    @apply w-5 h-5
   }
 
   .table-650-with-read-more-save-button-base-styles {
@@ -383,7 +387,9 @@
   .table-650-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
-
+  .table-650-with-read-more-source-content-base-styles {
+    @apply text-[13px]
+  }
 
 }
 
@@ -431,7 +437,7 @@
   }
 
   .table-500-with-read-more-toggle-col-icon-base-styles {
-    @apply w-6 h-6
+    @apply w-5 h-5
   }
 
   .table-500-with-read-more-save-button-base-styles {
@@ -440,6 +446,10 @@
 
   .table-500-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
+  }
+
+  .table-500-with-read-more-source-content-base-styles {
+    @apply text-[12px]
   }
 }
 
@@ -485,7 +495,7 @@
   }
 
   .table-400-with-read-more-toggle-col-icon-base-styles {
-    @apply w-6 h-6
+    @apply w-5 h-5
   }
 
   .table-400-with-read-more-save-button-base-styles {
@@ -494,6 +504,9 @@
 
   .table-400-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
+  }
+  .table-400-with-read-more-source-content-base-styles {
+    @apply text-[11px]
   }
 }
 
@@ -532,4 +545,10 @@
     @apply w-5 h-5 ml-2
   }
 
+  .table-320-with-read-more-toggle-col-icon-base-styles{
+    @apply w-4 h-4
+  }
+  .table-320-with-read-more-source-content-base-styles {
+    @apply text-[9px]
+  }
 }

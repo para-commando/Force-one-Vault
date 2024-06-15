@@ -152,7 +152,7 @@ const TableWithReadMore = () => {
   };
 
   return (
-    <div>
+    <div className='overflow-x-scroll'>
       <ToastContainer
         position='top-right'
         autoClose={1000}
@@ -171,7 +171,7 @@ const TableWithReadMore = () => {
       {/* Same as */}
       <ToastContainer />
       {credsList.length > 0 && (
-        <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
+        <table className='table-auto text-white w-full rounded-xl overflow-x-scroll'>
           <thead className='border-white bg-green-300 text-black'>
             <tr className='border-white'>
               <th className='border-white'>Toggle View</th>

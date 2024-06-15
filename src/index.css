@@ -99,7 +99,7 @@
   }
 
   .handler-passwords-display-empty-list-display-base-styles {
-    @apply text-white text-[14px] flex justify-center items-center
+    @apply text-white text-[14px] flex justify-center items-center  
   }
 
   .handler-passwords-display-empty-list-display-img-base-styles {

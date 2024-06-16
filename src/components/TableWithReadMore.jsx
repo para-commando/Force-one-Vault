@@ -296,11 +296,13 @@ const TableWithReadMore = () => {
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-source-content-base-styles table-1100-with-read-more-source-content-base-styles
-                          table-650-with-read-more-source-content-base-styles
-                          table-500-with-read-more-source-content-base-styles
-                          table-400-with-read-more-source-content-base-styles
-                          table-320-with-read-more-source-content-base-styles '>
+                          <span
+                            className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles'
+                          >
                             {renderCellContent(ele.source, isExpanded)}
                           </span>
                           <div
@@ -415,7 +417,13 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-unique-cred-id-content-base-styles   '>
+                          <span
+                            className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles   '
+                          >
                             {renderCellContent(ele.uniqueCredId, isExpanded)}
                           </span>
                           <div
@@ -530,7 +538,11 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-cred-content-base-styles '>
+                          <span className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles'>
                             {ele.isHidden
                               ? renderCellContent(
                                   '#'.repeat(ele.credential.length),
@@ -562,7 +574,7 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                           table-400-with-read-more-toggle-col-icon-base-styles 
                           table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
-                                copyToClipBoard(ele.uniqueCredId);
+                                copyToClipBoard(ele.credential);
                               }}
                             >
                               {' '}

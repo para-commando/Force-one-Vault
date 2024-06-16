@@ -35,7 +35,7 @@
   }
 
   .handler-base-styles {
-    @apply bg-armyBackgroundColor h-full relative py-20
+    @apply bg-armyBackgroundColor h-full relative py-20 
   }
 
   .handler-add-cred-section-base-styles {
@@ -126,7 +126,7 @@
     @apply flex justify-center w-6 h-6 ml-3
   }
 
-  .table-with-read-more-source-content-base-styles {
+  .table-with-read-more-content-base-styles {
     @apply pb-1 text-wrap break-words w-3/4
   }
 
@@ -146,10 +146,7 @@
     @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
   }
 
-  .table-with-read-more-unique-cred-id-content-base-styles {
-    @apply pb-1 text-wrap break-words w-3/4
-  }
-
+  
   .table-with-read-more-cred-cell-base-styles {
     @apply border-2 py-2 border-black text-center min-w-[200px] max-w-[250px]
   }
@@ -166,9 +163,7 @@
     @apply mx-1 bg-red-500 text-white px-2 rounded-full text-[14px]
   }
 
-  .table-with-read-more-cred-content-base-styles {
-    @apply pb-1 text-wrap break-words w-[70%]
-  }
+  
 
   .table-with-read-more-cred-content-eye-img-styles {
     @apply w-6 h-6 cursor-pointer
@@ -320,7 +315,7 @@
     @apply flex-col
   }
 
-  .table-1100-with-read-more-source-content-base-styles {
+  .table-1100-with-read-more-content-base-styles {
     @apply text-[14px]
   }
 }
@@ -387,7 +382,7 @@
   .table-650-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
-  .table-650-with-read-more-source-content-base-styles {
+  .table-650-with-read-more-content-base-styles {
     @apply text-[13px]
   }
 
@@ -448,7 +443,7 @@
     @apply w-5 h-5 ml-2
   }
 
-  .table-500-with-read-more-source-content-base-styles {
+  .table-500-with-read-more-content-base-styles {
     @apply text-[12px]
   }
 }
@@ -505,7 +500,7 @@
   .table-400-with-read-more-cancel-button-base-styles {
     @apply w-5 h-5 ml-2
   }
-  .table-400-with-read-more-source-content-base-styles {
+  .table-400-with-read-more-content-base-styles {
     @apply text-[11px]
   }
 }
@@ -548,7 +543,7 @@
   .table-320-with-read-more-toggle-col-icon-base-styles{
     @apply w-4 h-4
   }
-  .table-320-with-read-more-source-content-base-styles {
+  .table-320-with-read-more-content-base-styles {
     @apply text-[9px]
   }
 }

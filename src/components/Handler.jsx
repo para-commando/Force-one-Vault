@@ -6,7 +6,7 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
-import { setCredsList } from '../features/credsList/credsListSlice';
+import { setCredsList, sendCredsList } from '../features/credsList/credsListSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Handler() {
@@ -28,10 +28,10 @@ function Handler() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let creds = localStorage.getItem('creds');
-    if (creds) {
-      dispatch(setCredsList(JSON.parse(creds)));
-    }
+      let creds = localStorage.getItem('creds');
+      if (creds) {
+        dispatch(setCredsList(JSON.parse(creds)));
+      }
   }, []);
 
   const saveCredential = () => {
@@ -44,10 +44,9 @@ function Handler() {
       vaultCell.isHidden = true;
 
       dispatch(setCredsList([...credsList, vaultCell]));
-      localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
+      dispatch(sendCredsList(vaultCell));
+       localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 
-      const aaa = localStorage.getItem('creds');
-      console.log('🚀 ~ saveCredential ~ aaa:', aaa);
       setVaultCell({
         source: '',
         uniqueCredId: '',

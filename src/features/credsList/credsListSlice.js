@@ -1,4 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const sendCredsList = createAsyncThunk(
+  'credsList/sendCredsList',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/dd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }); // replace with your API endpoint
+    const resp = await response.json();
+    console.log("🚀 ~ resp:", resp)
+    return resp;
+  }
+
+);
+
+
 
 export const credsListSlice = createSlice({
   name: 'credsList',
@@ -57,6 +76,31 @@ export const credsListSlice = createSlice({
         state.value[index].isHidden = !action.payload.isHidden;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(sendCredsList.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(sendCredsList.fulfilled, (state, action) => {
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+        // state.status = 'succeeded';
+        // state.value = action.payload;
+        // console.log("🚀 ~ .addCase ~ state.value:", state.value)
+        // console.log("🚀 ~ .addCase ~ action.payload:", action.payload)
+        // const index = state.value.findIndex(
+        //   (cred) => cred.mainId === action.payload.mainId
+        // );
+        // console.log('🚀 ~ index:', index);
+        // if (index !== -1) {
+        //   state.value[index].source = action.payload.source;
+        // }
+        // localStorage.setItem('creds', JSON.stringify(state.value));
+      })
+      .addCase(sendCredsList.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
 

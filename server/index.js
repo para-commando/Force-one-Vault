@@ -1,14 +1,19 @@
-const express = require('express')
-const app = express()
-require('dotenv').config()
-const port = 3000
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+app.use(cors());
+app.use(bodyParser.json());
+app.get('/aa', (req, res) => {
+  // console.log('🚀 ~ app.post ~ req.form:', req);
+  res.send('Hello World!');
+});
 
-app.get('/', (req, res) => {
-    console.log('ooooo');
-    
-  res.send('Hello World!')
-})
-
+app.post('/dd', (req, res) => {
+  console.log('🚀 ~ app.post ~ req.form:', req.body);
+  res.send(`{"data":"123"}`);
+});
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});

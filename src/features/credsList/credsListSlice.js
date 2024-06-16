@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const updateCredCellOne = createAsyncThunk(
   'credsList/updateCredCellOne',
   async (data) => {
-    const response = await fetch('http://127.0.0.1:3000/dd', {
+    const response = await fetch('http://127.0.0.1:3000/updateCredCellOne', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export const updateCredCellOne = createAsyncThunk(
 export const updateCredCellTwo = createAsyncThunk(
   'credsList/updateCredCellTwo',
   async (data) => {
-    const response = await fetch('http://127.0.0.1:3000/dd', {
+    const response = await fetch('http://127.0.0.1:3000/updateCredCellTwo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const updateCredCellTwo = createAsyncThunk(
 export const updateCredCellThree = createAsyncThunk(
   'credsList/updateCredCellThree',
   async (data) => {
-    const response = await fetch('http://127.0.0.1:3000/dd', {
+    const response = await fetch('http://127.0.0.1:3000/updateCredCellThree', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const updateCredCellThree = createAsyncThunk(
 export const addNewCred = createAsyncThunk(
   'credsList/addNewCred',
   async (data) => {
-    const response = await fetch('http://127.0.0.1:3000/dd', {
+    const response = await fetch('http://127.0.0.1:3000/addNewCred', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export const addNewCred = createAsyncThunk(
 export const deleteCred = createAsyncThunk(
   'credsList/deleteCred',
   async (data) => {
-    const response = await fetch('http://127.0.0.1:3000/dd', {
+    const response = await fetch('http://127.0.0.1:3000/deleteCred', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,6 +77,16 @@ export const deleteCred = createAsyncThunk(
     const resp = await response.json();
     console.log('🚀 ~ resp:', resp);
     return data;
+  }
+);
+
+export const getAllCreds = createAsyncThunk(
+  'credsList/getAllCreds',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/getAllCreds'); // replace with your API endpoint
+    const resp = await response.json();
+    console.log('🚀 ~ resp:', resp);
+    return resp;
   }
 );
 

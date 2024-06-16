@@ -6,7 +6,7 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
-import { setCredsList,addNewCred } from '../features/credsList/credsListSlice';
+import { setCredsList,addNewCred, getAllCreds } from '../features/credsList/credsListSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Handler() {
@@ -29,6 +29,9 @@ function Handler() {
 
   useEffect(() => {
     let creds = localStorage.getItem('creds');
+    console.log("dsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+    const aaa= dispatch(getAllCreds());
+    console.log("🚀 ~ useEffect ~ aaa:", aaa)
     if (creds) {
       dispatch(setCredsList(JSON.parse(creds)));
     }   

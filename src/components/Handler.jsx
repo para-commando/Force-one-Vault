@@ -6,7 +6,7 @@ import emptyLockerImg from '../assets/emptyLocker.png';
 import { useRef, useState, useEffect } from 'react';
 import TableWithReadMore from './TableWithReadMore';
 import { v4 as uuidv4 } from 'uuid';
-import { setCredsList, sendCredsList } from '../features/credsList/credsListSlice';
+import { setCredsList,addNewCred } from '../features/credsList/credsListSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Handler() {
@@ -28,10 +28,10 @@ function Handler() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      let creds = localStorage.getItem('creds');
-      if (creds) {
-        dispatch(setCredsList(JSON.parse(creds)));
-      }
+    let creds = localStorage.getItem('creds');
+    if (creds) {
+      dispatch(setCredsList(JSON.parse(creds)));
+    }   
   }, []);
 
   const saveCredential = () => {
@@ -44,8 +44,8 @@ function Handler() {
       vaultCell.isHidden = true;
 
       dispatch(setCredsList([...credsList, vaultCell]));
-      dispatch(sendCredsList(vaultCell));
-       localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
+      dispatch(addNewCred(vaultCell));
+      localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 
       setVaultCell({
         source: '',
@@ -78,9 +78,11 @@ function Handler() {
   return (
     <>
       <div className='handler-base-styles handler-1100-base-styles'>
-        <div className='handler-add-cred-section-base-styles handler-1100-add-cred-section-styles
+        <div
+          className='handler-add-cred-section-base-styles handler-1100-add-cred-section-styles
         handler-500-add-cred-section-styles
-        handler-400-add-cred-section-styles'>
+        handler-400-add-cred-section-styles'
+        >
           <div className='handler-logo-section-base-styles handler-1100-logo-section-styles'>
             <div className='handler-logo-title-section-base-styles handler-1100-logo-title-section-styles'>
               <span
@@ -115,9 +117,11 @@ function Handler() {
               name='source'
               id=''
             />
-            <div className='flex gap-3 w-full 
+            <div
+              className='flex gap-3 w-full 
             handler-400-input-fields-unique-creds-and-creds-section-base-styles
-            handler-320-input-fields-unique-creds-and-creds-section-base-styles'>
+            handler-320-input-fields-unique-creds-and-creds-section-base-styles'
+            >
               <input
                 className='handler-input-fields-unique-creds-id-section-base-styles handler-1100-input-fields-unique-creds-id-section-base-styles
                 handler-650-input-fields-unique-creds-id-section-base-styles
@@ -176,8 +180,10 @@ function Handler() {
           </div>
         </div>
         <div className=' handler-passwords-display-section-base-styles '>
-          <h2 className='handler-passwords-display-heading-base-styles
-          handler-1100-passwords-display-heading-base-styles '>
+          <h2
+            className='handler-passwords-display-heading-base-styles
+          handler-1100-passwords-display-heading-base-styles '
+          >
             Your Credentials
           </h2>
           {/* overflow:hidden is needed to be added if border radius is to be put on a table */}

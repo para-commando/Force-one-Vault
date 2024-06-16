@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const sendCredsList = createAsyncThunk(
-  'credsList/sendCredsList',
+export const updateCredCellOne = createAsyncThunk(
+  'credsList/updateCredCellOne',
   async (data) => {
     const response = await fetch('http://127.0.0.1:3000/dd', {
       method: 'POST',
@@ -11,13 +11,74 @@ export const sendCredsList = createAsyncThunk(
       body: JSON.stringify(data),
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log("🚀 ~ resp:", resp)
-    return resp;
+    console.log('🚀 ~ resp:', resp);
+    return data;
   }
-
 );
 
+export const updateCredCellTwo = createAsyncThunk(
+  'credsList/updateCredCellTwo',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/dd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }); // replace with your API endpoint
+    const resp = await response.json();
+    console.log('🚀 ~ resp:', resp);
+    return data;
+  }
+);
 
+export const updateCredCellThree = createAsyncThunk(
+  'credsList/updateCredCellThree',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/dd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }); // replace with your API endpoint
+    const resp = await response.json();
+    console.log('🚀 ~ resp:', resp);
+    return data;
+  }
+);
+
+export const addNewCred = createAsyncThunk(
+  'credsList/addNewCred',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/dd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }); // replace with your API endpoint
+    const resp = await response.json();
+    console.log('🚀 ~ resp:', resp);
+    return resp;
+  }
+);
+
+export const deleteCred = createAsyncThunk(
+  'credsList/deleteCred',
+  async (data) => {
+    const response = await fetch('http://127.0.0.1:3000/dd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }); // replace with your API endpoint
+    const resp = await response.json();
+    console.log('🚀 ~ resp:', resp);
+    return data;
+  }
+);
 
 export const credsListSlice = createSlice({
   name: 'credsList',
@@ -30,44 +91,6 @@ export const credsListSlice = createSlice({
       state.value = action.payload;
     },
 
-    updateCredCellOne: (state, action) => {
-      const index = state.value.findIndex(
-        (cred) => cred.mainId === action.payload.mainId
-      );
-      console.log('🚀 ~ index:', index);
-      if (index !== -1) {
-        state.value[index].source = action.payload.source;
-      }
-      localStorage.setItem('creds', JSON.stringify(state.value));
-    },
-    updateCredCellTwo: (state, action) => {
-      console.log('🚀 ~ action:', action);
-      const index = state.value.findIndex(
-        (cred) => cred.mainId === action.payload.mainId
-      );
-      if (index !== -1) {
-        state.value[index].uniqueCredId = action.payload.uniqueCredId;
-      }
-      localStorage.setItem('creds', JSON.stringify(state.value));
-    },
-    updateCredCellThree: (state, action) => {
-      const index = state.value.findIndex(
-        (cred) => cred.mainId === action.payload.mainId
-      );
-      if (index !== -1) {
-        state.value[index].credential = action.payload.credential;
-      }
-      localStorage.setItem('creds', JSON.stringify(state.value));
-    },
-    deleteCred: (state, action) => {
-      if (confirm('Delete this credential?')) {
-        const newArray = state.value.filter(
-          (cred) => cred.mainId != action.payload.mainId
-        );
-        state.value = [...newArray];
-        localStorage.setItem('creds', JSON.stringify(state.value));
-      }
-    },
     togglePasswordVisibility: (state, action) => {
       const index = state.value.findIndex(
         (cred) => cred.mainId === action.payload.mainId
@@ -79,37 +102,93 @@ export const credsListSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(sendCredsList.pending, (state) => {
+      .addCase(updateCredCellOne.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(sendCredsList.fulfilled, (state, action) => {
+      .addCase(updateCredCellOne.fulfilled, (state, action) => {
         console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
-        // state.status = 'succeeded';
-        // state.value = action.payload;
-        // console.log("🚀 ~ .addCase ~ state.value:", state.value)
-        // console.log("🚀 ~ .addCase ~ action.payload:", action.payload)
-        // const index = state.value.findIndex(
-        //   (cred) => cred.mainId === action.payload.mainId
-        // );
-        // console.log('🚀 ~ index:', index);
-        // if (index !== -1) {
-        //   state.value[index].source = action.payload.source;
-        // }
-        // localStorage.setItem('creds', JSON.stringify(state.value));
+        const index = state.value.findIndex(
+          (cred) => cred.mainId === action.payload.mainId
+        );
+        console.log('🚀 ~ index:', index);
+        if (index !== -1) {
+          state.value[index].source = action.payload.source;
+        }
+        localStorage.setItem('creds', JSON.stringify(state.value));
       })
-      .addCase(sendCredsList.rejected, (state, action) => {
+      .addCase(updateCredCellOne.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(updateCredCellTwo.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateCredCellTwo.fulfilled, (state, action) => {
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+        const index = state.value.findIndex(
+          (cred) => cred.mainId === action.payload.mainId
+        );
+        console.log('🚀 ~ index:', index);
+        if (index !== -1) {
+          state.value[index].source = action.payload.uniqueCredId;
+        }
+        localStorage.setItem('creds', JSON.stringify(state.value));
+      })
+      .addCase(updateCredCellTwo.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(updateCredCellThree.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateCredCellThree.fulfilled, (state, action) => {
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+        const index = state.value.findIndex(
+          (cred) => cred.mainId === action.payload.mainId
+        );
+        console.log('🚀 ~ .addCase ~ state.value:', state.value);
+        console.log('🚀 ~ .addCase ~ index:', index);
+        console.log('🚀 ~ .addCase ~ action.payload:', action.payload);
+
+        if (index !== -1) {
+          state.value[index].credential = action.payload.credential;
+        }
+        localStorage.setItem('creds', JSON.stringify(state.value));
+      })
+      .addCase(updateCredCellThree.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(addNewCred.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(addNewCred.fulfilled, (state, action) => {
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+      })
+      .addCase(addNewCred.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteCred.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteCred.fulfilled, (state, action) => {
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+        if (confirm('Delete this credential?')) {
+          const newArray = state.value.filter(
+            (cred) => cred.mainId != action.payload.mainId
+          );
+          state.value = [...newArray];
+          localStorage.setItem('creds', JSON.stringify(state.value));
+        }
+      })
+      .addCase(deleteCred.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
   },
 });
 
-export const {
-  setCredsList,
-  updateCredCellOne,
-  updateCredCellTwo,
-  updateCredCellThree,
-  deleteCred,
-  togglePasswordVisibility,
-} = credsListSlice.actions;
+export const { setCredsList, togglePasswordVisibility } =
+  credsListSlice.actions;
 export default credsListSlice.reducer;

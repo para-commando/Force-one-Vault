@@ -9,7 +9,7 @@ function App() {
     <>
       <Navbar />
       <Handler />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

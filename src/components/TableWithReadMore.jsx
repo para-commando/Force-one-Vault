@@ -11,6 +11,8 @@ import {
 } from '../features/credsList/credsListSlice';
 import hidePasswordIcon from '../assets/hidePassword.png';
 import showPasswordIcon from '../assets/showPasswordIcon.png';
+import saveIcon from '../assets/save.png';
+import cancelIcon from '../assets/cancel.png';
 
 const TableWithReadMore = () => {
   const credsList = useSelector((state) => state.credsList.value);
@@ -43,7 +45,7 @@ const TableWithReadMore = () => {
   };
 
   const renderCellContent = (content, isExpanded) => {
-    const maxLength = 20;
+    const maxLength = 18;
     if (isExpanded || content.length <= maxLength) {
       return content;
     }
@@ -152,7 +154,7 @@ const TableWithReadMore = () => {
   };
 
   return (
-    <div>
+    <div className='overflow-x-scroll'>
       <ToastContainer
         position='top-right'
         autoClose={1000}
@@ -171,12 +173,19 @@ const TableWithReadMore = () => {
       {/* Same as */}
       <ToastContainer />
       {credsList.length > 0 && (
-        <table className='table-auto text-white w-full rounded-xl overflow-hidden'>
-          <thead className='border-white bg-green-300 text-black'>
+        <table className='table-auto text-white w-full overflow-x-scroll'>
+          <thead
+            className='table-with-read-more-header-base-styles table-1100-with-read-more-header-base-styles
+            table-650-with-read-more-header-base-styles
+            table-500-with-read-more-header-base-styles
+            table-400-with-read-more-header-base-styles
+            table-320-with-read-more-header-base-styles
+           '
+          >
             <tr className='border-white'>
               <th className='border-white'>Toggle View</th>
               <th className='border-white'>Source</th>
-              <th className='border-white'>Unique Credential ID</th>
+              <th className='border-white'>Unique Cred-ID</th>
               <th className='border-white'>Credential</th>
               <th className='border-white'>Delete</th>
             </tr>
@@ -185,25 +194,39 @@ const TableWithReadMore = () => {
             {credsList.map((ele) => {
               const isExpanded = !!expandedRows[ele.mainId];
               return (
-                <tr key={ele.mainId} className='border-white text-center'>
+                <tr key={ele.mainId} className='border-white text-center h-10'>
                   <td className='table-with-read-more-toggle-col-cell-base-styles'>
                     <button
                       className='text-blue-500 hover:underline mt-2'
                       onClick={() => toggleRow(ele.mainId)}
                     >
                       {isExpanded ? (
-                        <span title='Read Less' className='invert'>
-                          <lord-icon
-                            src='https://cdn.lordicon.com/xaubpxfc.json'
-                            trigger='hover'
-                          ></lord-icon>
+                        <span title='Read Less' className=''>
+                          <div
+                            className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
+                          >
+                            <lord-icon
+                              src='https://cdn.lordicon.com/xaubpxfc.json'
+                              trigger='hover'
+                              style={{ width: '100%', height: '100%' }}
+                            ></lord-icon>
+                          </div>
                         </span>
                       ) : (
-                        <span title='Read More' className='invert'>
-                          <lord-icon
-                            src='https://cdn.lordicon.com/ygnmvgzy.json'
-                            trigger='hover'
-                          ></lord-icon>
+                        <span title='Read More' className='  '>
+                          <div
+                            className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert'
+                          >
+                            <lord-icon
+                              src='https://cdn.lordicon.com/ygnmvgzy.json'
+                              style={{ width: '100%', height: '100%' }}
+                              trigger='hover'
+                            ></lord-icon>
+                          </div>
                         </span>
                       )}
                     </button>
@@ -211,7 +234,7 @@ const TableWithReadMore = () => {
                   <td className='table-with-read-more-source-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellOneID] ? (
-                        <>
+                        <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellOne || ''}
@@ -224,68 +247,105 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-source-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellOne({
-                                  mainId: ele.mainId,
-                                  source: inputValues[ele.mainId]?.cellOne,
-                                })
-                              );
-                              saveEditCellOne(ele);
-                            }}
-                            className='table-with-read-more-source-save-button-base-styles'
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+                          table-650-with-read-more-source-edit-cell-buttons-styles
+                          table-500-with-read-more-source-edit-cell-buttons-styles
+                          table-400-with-read-more-source-edit-cell-buttons-styles
+                          table-320-with-read-more-source-edit-cell-buttons-styles'
                           >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellOne(ele);
-                            }}
-                            className='table-with-read-more-source-cancel-button-base-styles'
-                          >
-                            Cancel
-                          </button>
-                        </>
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellOne({
+                                    mainId: ele.mainId,
+                                    source: inputValues[ele.mainId]?.cellOne,
+                                  })
+                                );
+                                saveEditCellOne(ele);
+                              }}
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+                            table-650-with-read-more-save-button-base-styles
+                            table-500-with-read-more-save-button-base-styles
+                            table-400-with-read-more-save-button-base-styles
+                            table-320-with-read-more-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellOne(ele);
+                              }}
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+                            table-650-with-read-more-cancel-button-base-styles
+                            table-500-with-read-more-cancel-button-base-styles
+                            table-400-with-read-more-cancel-button-base-styles
+                            table-320-with-read-more-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
+                        </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-source-content-base-styles'>
+                          <span
+                            className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles'
+                          >
                             {renderCellContent(ele.source, isExpanded)}
                           </span>
-                          <span className='invert cursor-pointer'>
-                            <span
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
                                 copyToClipBoard(ele.source);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingRight: '6px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellOne(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
-                          </span>
+                            </div>
+                          </div>
                         </>
                       )}
                     </div>
@@ -293,7 +353,7 @@ const TableWithReadMore = () => {
                   <td className='table-with-read-more-unique-cred-id-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellTwoID] ? (
-                        <>
+                        <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellTwo || ''}
@@ -306,69 +366,107 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-unique-cred-id-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellTwo({
-                                  mainId: ele.mainId,
-                                  uniqueCredId:
-                                    inputValues[ele.mainId]?.cellTwo,
-                                })
-                              );
-                              saveEditCellTwo(ele);
-                            }}
-                            className='table-with-read-more-unique-cred-id-save-button-base-styles '
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+table-650-with-read-more-source-edit-cell-buttons-styles
+table-500-with-read-more-source-edit-cell-buttons-styles
+table-400-with-read-more-source-edit-cell-buttons-styles
+table-320-with-read-more-source-edit-cell-buttons-styles'
                           >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellTwo(ele);
-                            }}
-                            className='table-with-read-more-unique-cred-id-cancel-button-base-styles'
-                          >
-                            Cancel
-                          </button>
-                        </>
+                            {' '}
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellTwo({
+                                    mainId: ele.mainId,
+                                    uniqueCredId:
+                                      inputValues[ele.mainId]?.cellTwo,
+                                  })
+                                );
+                                saveEditCellTwo(ele);
+                              }}
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+    table-650-with-read-more-save-button-base-styles
+    table-500-with-read-more-save-button-base-styles
+    table-400-with-read-more-save-button-base-styles
+    table-320-with-read-more-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellTwo(ele);
+                              }}
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+    table-650-with-read-more-cancel-button-base-styles
+    table-500-with-read-more-cancel-button-base-styles
+    table-400-with-read-more-cancel-button-base-styles
+    table-320-with-read-more-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
+                        </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-unique-cred-id-content-base-styles'>
+                          <span
+                            className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles   '
+                          >
                             {renderCellContent(ele.uniqueCredId, isExpanded)}
                           </span>
-                          <span className='invert cursor-pointer'>
-                            <span
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
                                 copyToClipBoard(ele.uniqueCredId);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingRight: '6px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellTwo(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
-                          </span>
+                            </div>
+                          </div>
                         </>
                       )}
                     </div>
@@ -376,7 +474,7 @@ const TableWithReadMore = () => {
                   <td className='table-with-read-more-cred-cell-base-styles'>
                     <div className='flex items-center justify-center'>
                       {onEditRows[ele.cellThreeID] ? (
-                        <>
+                        <div className='flex flex-col  items-center justify-center'>
                           <input
                             type='text'
                             value={inputValues[ele.mainId]?.cellThree || ''}
@@ -389,33 +487,62 @@ const TableWithReadMore = () => {
                             }
                             className='table-with-read-more-cred-edit-cell-base-styles'
                           />
-                          <button
-                            onClick={(e) => {
-                              dispatch(
-                                updateCredCellThree({
-                                  mainId: ele.mainId,
-                                  credential:
-                                    inputValues[ele.mainId]?.cellThree,
-                                })
-                              );
-                              saveEditCellThree(ele);
-                            }}
-                            className='table-with-read-more-cred-save-button-base-styles'
+                          <div
+                            className='flex table-1100-with-read-more-source-edit-cell-buttons-styles
+table-650-with-read-more-source-edit-cell-buttons-styles
+table-500-with-read-more-source-edit-cell-buttons-styles
+table-400-with-read-more-source-edit-cell-buttons-styles
+table-320-with-read-more-source-edit-cell-buttons-styles'
                           >
-                            Save
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              cancelEditCellThree(ele);
-                            }}
-                            className='table-with-read-more-cred-cancel-button-base-styles '
-                          >
-                            Cancel
-                          </button>
-                        </>
+                            {' '}
+                            <div
+                              onClick={(e) => {
+                                dispatch(
+                                  updateCredCellThree({
+                                    mainId: ele.mainId,
+                                    credential:
+                                      inputValues[ele.mainId]?.cellThree,
+                                  })
+                                );
+                                saveEditCellThree(ele);
+                              }}
+                              className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
+    table-650-with-read-more-save-button-base-styles
+    table-500-with-read-more-save-button-base-styles
+    table-400-with-read-more-save-button-base-styles
+    table-320-with-read-more-save-button-base-styles '
+                            >
+                              <img
+                                src={saveIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                            <div
+                              onClick={(e) => {
+                                cancelEditCellThree(ele);
+                              }}
+                              className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
+    table-650-with-read-more-cancel-button-base-styles
+    table-500-with-read-more-cancel-button-base-styles
+    table-400-with-read-more-cancel-button-base-styles
+    table-320-with-read-more-cancel-button-base-styles'
+                            >
+                              <img
+                                src={cancelIcon}
+                                alt=''
+                                className='w-full h-full cursor-pointer'
+                              />
+                            </div>
+                          </div>
+                        </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-cred-content-base-styles '>
+                          <span className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          table-650-with-read-more-content-base-styles
+                          table-500-with-read-more-content-base-styles
+                          table-400-with-read-more-content-base-styles
+                          table-320-with-read-more-content-base-styles'>
                             {ele.isHidden
                               ? renderCellContent(
                                   '#'.repeat(ele.credential.length),
@@ -423,12 +550,17 @@ const TableWithReadMore = () => {
                                 )
                               : renderCellContent(ele.credential, isExpanded)}
                           </span>
-                          <div className='invert cursor-pointer flex gap-1 items-center px-2'>
-                            <span
-                              onClick={(e) => {
+                          <div
+                            className='cursor-pointer 
+                          table-with-read-more-content-buttons-base-styles table-1100-with-read-more-content-buttons-base-styles'
+                          >
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert  '
+                              onClick={() => {
                                 togglePasswordVisibilityFunc(ele);
                               }}
-                              className='mr-3'
                             >
                               <img
                                 ref={hidePasswordIconRef}
@@ -436,38 +568,43 @@ const TableWithReadMore = () => {
                                 className='table-with-read-more-cred-content-eye-img-styles'
                                 alt='Toggle Credential'
                               />
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={() => {
                                 copyToClipBoard(ele.credential);
                               }}
                             >
+                              {' '}
                               <lord-icon
                                 style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
+                                  width: '100%',
+                                  height: '100%',
                                 }}
                                 src='https://cdn.lordicon.com/iykgtsbt.json'
                                 trigger='hover'
                               ></lord-icon>
-                            </span>
-                            <span
+                            </div>
+                            <div
+                              className='table-with-read-more-toggle-col-icon-base-styles table-1100-with-read-more-toggle-col-icon-base-styles table-650-with-read-more-toggle-col-icon-base-styles table-500-with-read-more-toggle-col-icon-base-styles 
+                          table-400-with-read-more-toggle-col-icon-base-styles 
+                          table-320-with-read-more-toggle-col-icon-base-styles  invert '
                               onClick={(e) => {
                                 editCredentialCellThree(e, ele);
                               }}
                             >
+                              {' '}
                               <lord-icon
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                }}
                                 src='https://cdn.lordicon.com/gwlusjdu.json'
                                 trigger='hover'
-                                style={{
-                                  width: '25px',
-                                  height: '25px',
-                                  paddingTop: '3px',
-                                  paddingLeft: '6px',
-                                }}
                               ></lord-icon>
-                            </span>
+                            </div>
                           </div>
                         </>
                       )}
@@ -475,12 +612,12 @@ const TableWithReadMore = () => {
                   </td>
                   <td className='table-with-read-more-delete-cell-base-styles'>
                     <button
-                      className=' hover:underline mt-2'
+                      className=' hover:underline mt-2 w-full'
                       onClick={() =>
                         dispatch(deleteCred({ mainId: ele.mainId }))
                       }
                     >
-                      <span title='Delete Credential' className=' '>
+                      <span title='Delete Credential' className='w-full'>
                         <lord-icon
                           src='https://cdn.lordicon.com/zxvuvcnc.json'
                           trigger='hover'

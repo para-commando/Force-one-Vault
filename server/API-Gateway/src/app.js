@@ -25,7 +25,11 @@ const {
 const {
   corsMiddleware,
 } = require('./Middlewares/Gateway-Middlewares/cors.middleware');
+require('dotenv').config();
 
+const {
+  mongoDatabaseClientConnect,
+} = require('../../shared/src/configurations/mongodb.configurations');
 const bodyParser = require('body-parser');
 
 app.use(corsMiddleware, (req, res, next) => {
@@ -49,5 +53,7 @@ app.use(bodyParser.json(), (req, res, next) => {
 
   next();
 });
+
+mongoDatabaseClientConnect();
 
 module.exports = app;

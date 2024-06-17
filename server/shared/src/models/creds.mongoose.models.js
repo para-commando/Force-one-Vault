@@ -12,6 +12,9 @@ module.exports = (connection) => {
       credential: {
         type: String,
       },
+      mainId: {
+        type: String,
+      },
       cellOneID: {
         type: String,
         required: true,

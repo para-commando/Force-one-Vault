@@ -18,19 +18,58 @@ let credsVaultModelForceOneVaultDb = '';
 
 module.exports.processes = {
   updateCredCellOneCoreProcess: async (asd) => {
-    logger.info(`This is the function argument : ${asd}`);
+    logger.info(`This is the function argument : ${JSON.stringify(asd)}`);
 
-    return asd;
+    const updatedDocument =
+      await credsVaultModelForceOneVaultDb.findOneAndUpdate(
+        {
+          mainId: asd.mainId,
+        },
+        { source: asd.source },
+        { new: true, useFindAndModify: false }
+      );
+
+    return {
+      status: 'success',
+      message: 'Data Updated successfully',
+      data: updatedDocument,
+    };
   },
   updateCredCellTwoCoreProcess: async (asd) => {
     logger.info(`This is the function argument : ${asd}`);
 
-    return asd;
+    const updatedDocument =
+      await credsVaultModelForceOneVaultDb.findOneAndUpdate(
+        {
+          mainId: asd.mainId,
+        },
+        { uniqueCredId: asd.uniqueCredId },
+        { new: true, useFindAndModify: false }
+      );
+
+    return {
+      status: 'success',
+      message: 'Data Updated successfully',
+      data: updatedDocument,
+    };
   },
   updateCredCellThreeCoreProcess: async (asd) => {
     logger.info(`This is the function argument : ${asd}`);
 
-    return asd;
+    const updatedDocument =
+      await credsVaultModelForceOneVaultDb.findOneAndUpdate(
+        {
+          mainId: asd.mainId,
+        },
+        { credential: asd.credential },
+        { new: true, useFindAndModify: false }
+      );
+
+    return {
+      status: 'success',
+      message: 'Data Updated successfully',
+      data: updatedDocument,
+    };
   },
   addNewCredProcessCoreProcess: async (asd) => {
     logger.info(`This is the function argument : ${JSON.stringify(asd)}`);
@@ -48,6 +87,16 @@ module.exports.processes = {
   deleteCredProcessCoreProcess: async (asd) => {
     logger.info(`This is the function argument : ${asd}`);
 
-    return asd;
+    const deletedDocument =
+      await credsVaultModelForceOneVaultDb.findOneAndDelete({
+        mainId: asd.mainId,
+      });
+      console.log("🚀 ~ deleteCredProcessCoreProcess: ~ deletedDocument:", deletedDocument)
+
+    return {
+      status: 'success',
+      message: 'Data Deleted successfully',
+      data: deletedDocument,
+    };
   },
 };

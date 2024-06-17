@@ -10,6 +10,7 @@ module.exports.processMappers = {
       return processResponse;
     } catch (err) {
       logger.error('This is an error object: ', err);
+      throw err;
     }
   },
   updateCredCellTwoProcess: async (asd) => {
@@ -21,6 +22,7 @@ module.exports.processMappers = {
       return processResponse;
     } catch (err) {
       logger.error('This is an error object: ', err);
+      throw err;
     }
   },
   updateCredCellThreeProcess: async (asd) => {
@@ -34,6 +36,7 @@ module.exports.processMappers = {
       return processResponse;
     } catch (err) {
       logger.error('This is an error object: ', err);
+      throw err;
     }
   },
   addNewCredProcess: async (asd) => {
@@ -58,6 +61,7 @@ module.exports.processMappers = {
       return processResponse;
     } catch (err) {
       logger.error('This is an error object: ', err);
+      throw err;
     }
   },
 };

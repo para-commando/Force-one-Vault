@@ -136,14 +136,14 @@ app.post(
     try {
       const schema = Joi.object({
         source: Joi.string().allow('').default(''),
-        uniqueCredId: Joi.string().default(null),
-        credential: Joi.string().default(null),
-        mainId: Joi.string().default(null),
-        cellTwoID: Joi.string().default(null),
-        cellOneID: Joi.string().default(null),
-        cellThreeID: Joi.string().default(null),
-        isEditNotClicked: Joi.boolean().default(null),
-        isHidden: Joi.boolean().default(null),
+        uniqueCredId: Joi.string().allow('').default(''),
+        credential: Joi.string().allow('').default(''),
+        mainId: Joi.string().default(''),
+        cellTwoID: Joi.string().default(''),
+        cellOneID: Joi.string().default(''),
+        cellThreeID: Joi.string().default(''),
+        isEditNotClicked: Joi.boolean().default(true),
+        isHidden: Joi.boolean().default(true),
       });
       const validationResult = schema.validate(req.body);
       console.log('🚀 ~ validationResult:', validationResult);

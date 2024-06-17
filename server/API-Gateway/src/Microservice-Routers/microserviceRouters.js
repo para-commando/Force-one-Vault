@@ -217,7 +217,7 @@ app.post(
   }
 );
 
-app.post(
+app.get(
   '/getAllCreds',
   getAllCredsMiddlewares.expressRateLimiterMiddleware,
   async (req, res, next) => {

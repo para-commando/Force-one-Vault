@@ -96,8 +96,8 @@ export const getAllCreds = createAsyncThunk(
       },
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log('🚀 ~ resp:', resp);
-    return resp;
+    console.log('🚀 ~ resp1111111111111111:', resp);
+    return resp.data;
   }
 );
 
@@ -204,6 +204,19 @@ export const credsListSlice = createSlice({
         }
       })
       .addCase(deleteCred.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getAllCreds.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllCreds.fulfilled, (state, action) => {
+        console.log('🚀 ~ .addCase ~ state:', state.value);
+        console.log('🚀 ~ .addCase ~ action:', action.payload);
+        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+         
+      })
+      .addCase(getAllCreds.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

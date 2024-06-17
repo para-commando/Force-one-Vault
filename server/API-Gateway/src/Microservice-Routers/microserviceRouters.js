@@ -11,7 +11,7 @@ const Joi = require('joi');
 const {
   processMappers,
 } = require('../../../sub-systems/MicroserviceOne/Process-Mappers/processMappers');
- 
+
 const logger = require('../../../shared/src/configurations/logger.configurations');
 // API specific Rate-limiting Middleware
 app.post(
@@ -25,13 +25,14 @@ app.post(
       });
       const validationResult = schema.validate(req.body);
       if (validationResult.error) {
-
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
         res.sendStatus(400);
       } else {
-        const response = await processMappers.updateCredCellOneProcess(validationResult.value);
+        const response = await processMappers.updateCredCellOneProcess(
+          validationResult.value
+        );
 
         logger.info(
           '🚀 ~ file: microserviceRouters.js:31 ~ response:',
@@ -42,9 +43,13 @@ app.post(
         });
       }
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );
@@ -76,9 +81,13 @@ app.post(
         });
       }
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );
@@ -109,9 +118,13 @@ app.post(
         });
       }
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );
@@ -119,9 +132,10 @@ app.post(
   '/addNewCred',
   addNewCredMiddlewares.expressRateLimiterMiddleware,
   async (req, res, next) => {
+    console.log('🚀 ~ req:', req.body);
     try {
       const schema = Joi.object({
-        source: Joi.string().default(null),
+        source: Joi.string().allow('').default(''),
         uniqueCredId: Joi.string().default(null),
         credential: Joi.string().default(null),
         mainId: Joi.string().default(null),
@@ -132,13 +146,16 @@ app.post(
         isHidden: Joi.boolean().default(null),
       });
       const validationResult = schema.validate(req.body);
+      console.log('🚀 ~ validationResult:', validationResult);
       if (validationResult.error) {
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
         res.sendStatus(400);
       } else {
-        const response = await processMappers.addNewCredProcess(validationResult.value);
+        const response = await processMappers.addNewCredProcess(
+          validationResult.value
+        );
 
         logger.info(
           '🚀 ~ file: microserviceRouters.js:31 ~ response:',
@@ -149,9 +166,13 @@ app.post(
         });
       }
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );
@@ -172,7 +193,9 @@ app.post(
 
         res.sendStatus(400);
       } else {
-        const response = await processMappers.deleteCredProcess(validationResult.value);
+        const response = await processMappers.deleteCredProcess(
+          validationResult.value
+        );
 
         logger.info(
           '🚀 ~ file: microserviceRouters.js:31 ~ response:',
@@ -183,9 +206,13 @@ app.post(
         });
       }
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );
@@ -202,9 +229,13 @@ app.post(
         response: response,
       });
     } catch (error) {
-      logger.error('This is an error message.');
+      logger.error(`This is an error message. ${JSON.stringify(error)}`);
 
-      res.status(400).json({ error: error });
+      res.status(500).json({
+        status: 'failed',
+        message: 'Operation failed. Please try again',
+        error: error,
+      });
     }
   }
 );

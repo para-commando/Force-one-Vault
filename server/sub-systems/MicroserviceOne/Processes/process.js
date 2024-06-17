@@ -7,7 +7,6 @@ let credsVaultModelForceOneVaultDb = '';
 (async () => {
   try {
     const { forceOneVaultDbConnection } = await mongoDatabaseClientConnect();
-    // console.log('🚀 ~ forceOneVaultDbConnection:', forceOneVaultDbConnection);
     credsVaultModelForceOneVaultDb =
       require('../../../shared/src/models/creds.mongoose.models')(
         forceOneVaultDbConnection
@@ -34,27 +33,17 @@ module.exports.processes = {
     return asd;
   },
   addNewCredProcessCoreProcess: async (asd) => {
-    logger.info(`This is the function argument : ${asd}`);
-    // const { forceOneVaultDbConnection } = await  mongoDatabaseClientConnect();
-    // console.log('🚀 ~ forceOneVaultDbConnection:', forceOneVaultDbConnection);
-    // const credsVaultModelForceOneVaultDb =
-    //   require('../../../shared/src/models/creds.mongoose.models')(
-    //     forceOneVaultDbConnection
-    //   );
-    const newCred = new credsVaultModelForceOneVaultDb({
-      source: 'exampleSource',
-      uniqueCredId: 'exampleCredId',
-      credential: 'exampleCredential',
-      cellOneID: 'exampleCellOneID',
-      cellTwoID: 'exampleCellTwoID',
-      cellThreeID: 'exampleCellThreeID',
-      isEditNotClicked: true,
-      isHidden: false,
-    });
+    logger.info(`This is the function argument : ${JSON.stringify(asd)}`);
+
+    const newCred = new credsVaultModelForceOneVaultDb(asd);
 
     const savedCred = await newCred.save();
     console.log('Data saved successfully:', savedCred);
-    return asd;
+    return {
+      status: 'success',
+      message: 'Data saved successfully',
+      data: savedCred,
+    };
   },
   deleteCredProcessCoreProcess: async (asd) => {
     logger.info(`This is the function argument : ${asd}`);

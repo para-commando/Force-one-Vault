@@ -45,6 +45,7 @@ module.exports.processMappers = {
       return processResponse;
     } catch (err) {
       logger.error('This is an error object: ', err);
+      throw err;
     }
   },
 

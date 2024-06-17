@@ -64,4 +64,16 @@ module.exports.processMappers = {
       throw err;
     }
   },
+  getAllCredsProcess: async () => {
+
+    try {
+
+      logger.warn('This is a warning message.');
+      const processResponse = await processes.getAllCredsProcessCoreProcess();
+      return processResponse;
+    } catch (err) {
+      logger.error('This is an error object: ', err);
+      throw err;
+    }
+  }
 };

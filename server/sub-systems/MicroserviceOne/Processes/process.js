@@ -99,4 +99,16 @@ module.exports.processes = {
       data: deletedDocument,
     };
   },
+  getAllCredsProcessCoreProcess: async () => {
+
+    const allDocument =
+      await credsVaultModelForceOneVaultDb.find();
+      console.log("🚀 ~ deleteCredProcessCoreProcess: ~ deletedDocument:", allDocument)
+
+    return {
+      status: 'success',
+      message: 'All data fetched successfully',
+      data: allDocument,
+    };
+  },
 };

@@ -222,7 +222,7 @@ app.post(
   getAllCredsMiddlewares.expressRateLimiterMiddleware,
   async (req, res, next) => {
     try {
-      const response = await processMappers.process1(validationResult.value);
+      const response = await processMappers.getAllCredsProcess();
 
       logger.info('🚀 ~ file: microserviceRouters.js:31 ~ response:', response);
       res.json({

@@ -65,7 +65,7 @@ const TableWithReadMore = () => {
     console.log('🚀 ~ copyToClipBoard ~ params:', params);
     navigator.clipboard.writeText(params);
     if (params) {
-      toast('CopiedcredsList To Clipboard!', {
+      toast('Copied credsList To Clipboard!', {
         position: 'top-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -262,7 +262,7 @@ const TableWithReadMore = () => {
                                     source: inputValues[ele.mainId]?.cellOne,
                                   })
                                 );
-                                 
+
                                 saveEditCellOne(ele);
                               }}
                               className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles
@@ -279,6 +279,11 @@ const TableWithReadMore = () => {
                             </div>
                             <div
                               onClick={(e) => {
+                                handleInputChange(
+                                  ele.mainId,
+                                  'cellOne',
+                                  ele.source
+                                );
                                 cancelEditCellOne(ele);
                               }}
                               className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
@@ -400,6 +405,11 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                             </div>
                             <div
                               onClick={(e) => {
+                                handleInputChange(
+                                  ele.mainId,
+                                  'cellTwo',
+                                  ele.uniqueCredId
+                                );
                                 cancelEditCellTwo(ele);
                               }}
                               className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
@@ -521,6 +531,11 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                             </div>
                             <div
                               onClick={(e) => {
+                                handleInputChange(
+                                  ele.mainId,
+                                  'cellThree',
+                                  ele.credential
+                                );
                                 cancelEditCellThree(ele);
                               }}
                               className='table-with-read-more-cancel-button-base-styles table-1100-with-read-more-cancel-button-base-styles
@@ -539,11 +554,13 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                         </div>
                       ) : (
                         <>
-                          <span className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
+                          <span
+                            className='table-with-read-more-content-base-styles table-1100-with-read-more-content-base-styles
                           table-650-with-read-more-content-base-styles
                           table-500-with-read-more-content-base-styles
                           table-400-with-read-more-content-base-styles
-                          table-320-with-read-more-content-base-styles'>
+                          table-320-with-read-more-content-base-styles'
+                          >
                             {ele.isHidden
                               ? renderCellContent(
                                   '#'.repeat(ele.credential.length),

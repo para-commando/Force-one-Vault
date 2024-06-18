@@ -33,15 +33,7 @@ function Handler() {
 
   useEffect(() => {
     const asd = async () => {
-      // const creds =localStorage.getItem('creds');
-      // console.log(
-      //   'dsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
-      // );
-       await dispatch(getAllCreds());
-      // console.log('🚀 ~ useEffect ~ aaa:', aaa);
-      // if (creds) {
-      //   dispatch(setCredsList(JSON.parse(creds)));
-      // }
+      await dispatch(getAllCreds());
     };
     asd();
   }, []);
@@ -54,10 +46,7 @@ function Handler() {
       vaultCell.cellThreeID = uuidv4();
       vaultCell.isEditNotClicked = true;
       vaultCell.isHidden = true;
-
-      dispatch(setCredsList([...credsList, vaultCell]));
       dispatch(addNewCred(vaultCell));
-      // localStorage.setItem('creds', JSON.stringify([...credsList, vaultCell]));
 
       setVaultCell({
         source: '',
@@ -71,6 +60,7 @@ function Handler() {
 
   const showCredential = () => {
     if (credentialShowIconImgRef.current.src.includes('hidden.png')) {
+      
       credentialShowIconImgRef.current.src = credentialShowIcon;
       credentialRef.current.type = 'password';
 

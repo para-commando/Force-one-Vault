@@ -32,7 +32,7 @@ module.exports.updateCredCellOneMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'updateCredCellOne',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),
@@ -42,7 +42,7 @@ module.exports.updateCredCellTwoMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'updateCredCellTwo',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),
@@ -52,7 +52,7 @@ module.exports.updateCredCellThreeMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'updateCredCellThree',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),
@@ -62,7 +62,7 @@ module.exports.addNewCredMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'addNewCred',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),
@@ -74,7 +74,7 @@ module.exports.deleteCredMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'deleteCred',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),
@@ -86,7 +86,7 @@ module.exports.getAllCredsMiddlewares = {
   expressRateLimiterMiddleware: expressRateLimiterMiddleware({
     endpoint: 'getAllCreds',
     windowDurationInMinutes: 0.5, // 30 seconds
-    requestLimit: 2, // Limit each IP to 2 requests per 30 seconds
+    requestLimit: 10, // Limit each IP to 2 requests per 30 seconds
     statusCode: 429, // HTTP status code for rate limit exceeded
     ErrorMessage: 'Too many requests from your IP. Please try again later.',
   }),

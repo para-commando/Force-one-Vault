@@ -76,7 +76,7 @@ app.post(
           message: 'Invalid schema, please try again',
         });
       } else {
-        const response = await processMappers.process1(validationResult.value);
+        const response = await processMappers.updateCredCellTwoProcess(validationResult.value);
 
         logger.info(
           '🚀 ~ file: microserviceRouters.js:31 ~ response:',
@@ -116,7 +116,7 @@ app.post(
           message: 'Invalid schema, please try again',
         });
       } else {
-        const response = await processMappers.process1(validationResult.value);
+        const response = await processMappers.updateCredCellThreeProcess(validationResult.value);
 
         logger.info(
           '🚀 ~ file: microserviceRouters.js:31 ~ response:',

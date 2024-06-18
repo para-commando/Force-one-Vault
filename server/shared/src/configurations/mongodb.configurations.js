@@ -13,6 +13,7 @@ const mongoDatabaseClientConnect = () => {
   }
 
   if (!connectionPromise) {
+
     connectionPromise = new Promise((resolve, reject) => {
       try {
         const username = process.env.MONGODB_USERNAME;

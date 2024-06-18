@@ -28,7 +28,10 @@ app.post(
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
-        res.sendStatus(400);
+        res.status(400).json({
+          status: 'failed',
+          message: 'Invalid schema, please try again',
+        });
       } else {
         const response = await processMappers.updateCredCellOneProcess(
           validationResult.value
@@ -68,7 +71,10 @@ app.post(
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
-        res.sendStatus(400);
+        res.status(400).json({
+          status: 'failed',
+          message: 'Invalid schema, please try again',
+        });
       } else {
         const response = await processMappers.process1(validationResult.value);
 
@@ -105,7 +111,10 @@ app.post(
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
-        res.sendStatus(400);
+        res.status(400).json({
+          status: 'failed',
+          message: 'Invalid schema, please try again',
+        });
       } else {
         const response = await processMappers.process1(validationResult.value);
 
@@ -151,7 +160,10 @@ app.post(
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
-        res.sendStatus(400);
+        res.status(400).json({
+          status: 'failed',
+          message: 'Invalid schema, please try again',
+        });
       } else {
         const response = await processMappers.addNewCredProcess(
           validationResult.value
@@ -191,7 +203,10 @@ app.post(
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
 
-        res.sendStatus(400);
+        res.status(400).json({
+          status: 'failed',
+          message: 'Invalid schema, please try again',
+        });
       } else {
         const response = await processMappers.deleteCredProcess(
           validationResult.value

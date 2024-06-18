@@ -65,7 +65,7 @@ const TableWithReadMore = () => {
     console.log('🚀 ~ copyToClipBoard ~ params:', params);
     navigator.clipboard.writeText(params);
     if (params) {
-      toast('Copied credsList To Clipboard!', {
+      toast('Copied To Clipboard!', {
         position: 'top-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -139,19 +139,7 @@ const TableWithReadMore = () => {
     }));
   };
 
-  const togglePasswordVisibilityFunc = (ele) => {
-    dispatch(
-      togglePasswordVisibility({
-        mainId: ele.mainId,
-        isHidden: ele.isHidden,
-      })
-    );
-    if (hidePasswordIconRef.current.src.includes('showPasswordIcon.png')) {
-      hidePasswordIconRef.current.src = hidePasswordIcon;
-      return;
-    }
-    hidePasswordIconRef.current.src = showPasswordIcon;
-  };
+
 
   return (
     <div className='overflow-x-scroll'>
@@ -577,12 +565,17 @@ table-320-with-read-more-source-edit-cell-buttons-styles'
                           table-400-with-read-more-toggle-col-icon-base-styles 
                           table-320-with-read-more-toggle-col-icon-base-styles  invert  '
                               onClick={() => {
-                                togglePasswordVisibilityFunc(ele);
+                                dispatch(
+                                  togglePasswordVisibility({
+                                    mainId: ele.mainId,
+                                    isHidden: ele.isHidden,
+                                  })
+                                );
                               }}
                             >
                               <img
                                 ref={hidePasswordIconRef}
-                                src={showPasswordIcon}
+                                src={ele.isHidden ? showPasswordIcon: hidePasswordIcon}
                                 className='table-with-read-more-cred-content-eye-img-styles'
                                 alt='Toggle Credential'
                               />

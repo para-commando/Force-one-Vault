@@ -65,7 +65,7 @@ const TableWithReadMore = () => {
     console.log('🚀 ~ copyToClipBoard ~ params:', params);
     navigator.clipboard.writeText(params);
     if (params) {
-      toast('Copied To Clipboard!', {
+      toast('CopiedcredsList To Clipboard!', {
         position: 'top-right',
         autoClose: 1000,
         hideProgressBar: false,
@@ -262,6 +262,7 @@ const TableWithReadMore = () => {
                                     source: inputValues[ele.mainId]?.cellOne,
                                   })
                                 );
+                                 
                                 saveEditCellOne(ele);
                               }}
                               className='table-with-read-more-save-button-base-styles table-1100-with-read-more-save-button-base-styles

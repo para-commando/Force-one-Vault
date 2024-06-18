@@ -144,8 +144,7 @@ export const credsListSlice = createSlice({
           if (index !== -1) {
             state.value[index].source = action.payload.source;
           }
-          localStorage.setItem('creds', JSON.stringify(state.value));
-        } else {
+         } else {
           alert('something went wrong while updating data. Please try again');
         }
       })
@@ -164,8 +163,7 @@ export const credsListSlice = createSlice({
           if (index !== -1) {
             state.value[index].uniqueCredId = action.payload.uniqueCredId;
           }
-          localStorage.setItem('creds', JSON.stringify(state.value));
-        } else {
+         } else {
           alert('something went wrong while updating data. Please try again');
         }
       })
@@ -184,8 +182,7 @@ export const credsListSlice = createSlice({
           if (index !== -1) {
             state.value[index].credential = action.payload.credential;
           }
-          localStorage.setItem('creds', JSON.stringify(state.value));
-        } else {
+         } else {
           alert('something went wrong while updating data. Please try again');
         }
       })
@@ -215,8 +212,7 @@ export const credsListSlice = createSlice({
             (cred) => cred.mainId != action.payload.mainId
           );
           state.value = [...newArray];
-          localStorage.setItem('creds', JSON.stringify(state.value));
-        } else {
+         } else {
           alert('something went wrong while deleting data. Please try again');
         }
       })

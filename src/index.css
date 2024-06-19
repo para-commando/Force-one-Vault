@@ -446,6 +446,11 @@
   .table-500-with-read-more-content-base-styles {
     @apply text-[12px]
   }
+
+  .footer-responsive-styles-500-sub-heading-text {
+    @apply text-[17px];
+
+  }
 }
 
 @media (max-width: 400px) {

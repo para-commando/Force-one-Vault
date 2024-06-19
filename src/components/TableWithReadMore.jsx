@@ -23,10 +23,8 @@ const TableWithReadMore = () => {
   const hidePasswordIconRef = useRef('');
   useEffect(() => {
     const initialValues = {};
-    console.log('🚀 ~ useEffect ~ credsList:', credsList);
 
     if (credsList.length) {
-      console.log('🚀 ~ useEffect ~ credsList:', credsList);
       credsList.forEach((ele) => {
         initialValues[ele.mainId] = {
           cellOne: ele.source,
@@ -62,7 +60,6 @@ const TableWithReadMore = () => {
   };
 
   const copyToClipBoard = (params) => {
-    console.log('🚀 ~ copyToClipBoard ~ params:', params);
     navigator.clipboard.writeText(params);
     if (params) {
       toast('Copied To Clipboard!', {

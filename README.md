@@ -4,7 +4,7 @@ Force-One-Vault is your go to credentials manager application if you would want 
 
 ## Demo Video
 
-
+<video src="./src/assets/ForceOneVaultDemo1.mp4"></video>
 
 ## Table of Contents
 

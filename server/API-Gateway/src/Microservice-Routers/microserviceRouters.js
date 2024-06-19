@@ -141,7 +141,6 @@ app.post(
   '/addNewCred',
   addNewCredMiddlewares.expressRateLimiterMiddleware,
   async (req, res, next) => {
-    console.log('🚀 ~ req:', req.body);
     try {
       const schema = Joi.object({
         source: Joi.string().allow('').default(''),
@@ -155,7 +154,6 @@ app.post(
         isHidden: Joi.boolean().default(true),
       });
       const validationResult = schema.validate(req.body);
-      console.log('🚀 ~ validationResult:', validationResult);
       if (validationResult.error) {
         logger.warn('This is a warning message.');
         logger.error('This is an error message.');
@@ -193,7 +191,6 @@ app.post(
   '/deleteCred',
   deleteCredMiddlewares.expressRateLimiterMiddleware,
   async (req, res, next) => {
-    console.log('🚀 ~ req:', req.body);
     try {
       const schema = Joi.object({
         mainId: Joi.string().default(null),

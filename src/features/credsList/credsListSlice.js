@@ -12,7 +12,6 @@ export const updateCredCellOne = createAsyncThunk(
       body: JSON.stringify(data),
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log('🚀 ~ resp.data:', resp.response.data);
     if (resp.response.data) {
       return resp.response.data;
     }
@@ -32,7 +31,6 @@ export const updateCredCellTwo = createAsyncThunk(
       body: JSON.stringify(data),
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log('🚀 ~ resp:', resp);
     return resp.response.data;
   }
 );
@@ -49,7 +47,6 @@ export const updateCredCellThree = createAsyncThunk(
       body: JSON.stringify(data),
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log('🚀 ~ resp:', resp);
     return resp.response.data;
   }
 );
@@ -66,7 +63,6 @@ export const addNewCred = createAsyncThunk(
       body: JSON.stringify(data),
     }); // replace with your API endpoint
     const resp = await response.json();
-    console.log('🚀 ~ resp:', resp);
     return resp.response.data;
   }
 );
@@ -84,7 +80,6 @@ export const deleteCred = createAsyncThunk(
         body: JSON.stringify(data),
       }); // replace with your API endpoint
       const resp = await response.json();
-      console.log('🚀 ~ resp:', resp);
       return resp.response.data;
     } else {
       return;
@@ -103,7 +98,6 @@ export const getAllCreds = createAsyncThunk(
       },
     }); // replace with your API endpoint
     const resp = await response.json();
-     console.log("🚀 ~ resp---------getAllCreds:", resp)
      return resp.response.data;
   }
 );
@@ -115,7 +109,6 @@ export const credsListSlice = createSlice({
   },
   reducers: {
     setCredsList: (state, action) => {
-      console.log('🚀 ~ action:', action);
       state.value = action.payload;
     },
 
@@ -131,8 +124,6 @@ export const credsListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updateCredCellOne.pending, (state) => {
-        console.log('pendinggggg');
-
         state.status = 'loading';
       })
       .addCase(updateCredCellOne.fulfilled, (state, action) => {
@@ -140,7 +131,6 @@ export const credsListSlice = createSlice({
           const index = state.value.findIndex(
             (cred) => cred.mainId === action.payload.mainId
           );
-          console.log('🚀 ~ index:', index);
           if (index !== -1) {
             state.value[index].source = action.payload.source;
           }
@@ -159,7 +149,6 @@ export const credsListSlice = createSlice({
           const index = state.value.findIndex(
             (cred) => cred.mainId === action.payload.mainId
           );
-          console.log('🚀 ~ index:', index);
           if (index !== -1) {
             state.value[index].uniqueCredId = action.payload.uniqueCredId;
           }
@@ -178,7 +167,6 @@ export const credsListSlice = createSlice({
           const index = state.value.findIndex(
             (cred) => cred.mainId === action.payload.mainId
           );
-          console.log('🚀 ~ index:', index);
           if (index !== -1) {
             state.value[index].credential = action.payload.credential;
           }
@@ -206,7 +194,6 @@ export const credsListSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(deleteCred.fulfilled, (state, action) => {
-        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
         if (action.payload.mainId) {
           const newArray = state.value.filter(
             (cred) => cred.mainId != action.payload.mainId
@@ -223,8 +210,7 @@ export const credsListSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(getAllCreds.fulfilled, (state, action) => {
-        console.log('🚀 ~ .addCase ~ action:', action.payload);
-        console.log('sdffffffffffffffffffffffffffffffffffffffffffffff');
+
         if (action.payload) {
           state.value = action.payload;
         } else {

@@ -77,7 +77,7 @@ module.exports.processes = {
     const newCred = new credsVaultModelForceOneVaultDb(asd);
 
     const savedCred = await newCred.save();
-    console.log('Data saved successfully:', savedCred);
+    
     return {
       status: 'success',
       message: 'Data saved successfully',
@@ -91,7 +91,6 @@ module.exports.processes = {
       await credsVaultModelForceOneVaultDb.findOneAndDelete({
         mainId: asd.mainId,
       });
-      console.log("🚀 ~ deleteCredProcessCoreProcess: ~ deletedDocument:", deletedDocument)
 
     return {
       status: 'success',
@@ -103,7 +102,6 @@ module.exports.processes = {
 
     const allDocument =
       await credsVaultModelForceOneVaultDb.find();
-      console.log("🚀 ~ deleteCredProcessCoreProcess: ~ deletedDocument:", allDocument)
 
     return {
       status: 'success',

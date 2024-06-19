@@ -117,7 +117,7 @@ function Handler() {
               placeholder='Enter Source URL/Info'
               type='text'
               name='source'
-              id=''
+              id='sourceInput'
             />
             <div
               className='flex gap-3 w-full 
@@ -134,7 +134,7 @@ function Handler() {
                 placeholder='Unique Credential-id'
                 type='text'
                 name='uniqueCredId'
-                id=''
+                id='uniqueCredIdInput'
               />
               <div
                 className='handler-input-fields-creds-section-base-styles handler-1100-input-fields-creds-section-base-styles 
@@ -150,7 +150,7 @@ function Handler() {
                   placeholder='Credential'
                   name='credential'
                   type='password'
-                  id=''
+                  id='credentialInput'
                 />
                 <span className='absolute right-3' onClick={showCredential}>
                   <img
